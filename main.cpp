@@ -1,18 +1,14 @@
 
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-
-#include <iostream>
-#include <vector>
-#include <string>
+#include "Window.h"
 
 int main() {
-	std::cout << "Wassup\n";
+	Vi::Window::createGLFWContext("Render3D", 1920, 1080);
+	
+	while (Vi::Window::isOpen()) {
+
+	}
+
+	Vi::Window::destroyGLFWContext();
 	return 0;
 }
 
