@@ -159,8 +159,16 @@
     <ClCompile Include="ImGui\imgui_tables.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math.double3.cpp" />
+    <ClCompile Include="Math.double4x4.cpp" />
+    <ClCompile Include="Math.float3.cpp" />
+    <ClCompile Include="Math.float4.cpp" />
+    <ClCompile Include="Math.float4x4.cpp" />
+    <ClCompile Include="Math.Quaternion.cpp" />
+    <ClCompile Include="Math.Trans.cpp" />
     <ClCompile Include="OpenGL\glad.c" />
-    <ClCompile Include="Window.CallBack.cpp" />
+    <ClCompile Include="Violet.Mesh.cpp" />
+    <ClCompile Include="Violet.Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImGui\imconfig.h" />
@@ -172,7 +180,8 @@
     <ClInclude Include="ImGui\imstb_rectpack.h" />
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Math.h" />
+    <ClInclude Include="Violet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

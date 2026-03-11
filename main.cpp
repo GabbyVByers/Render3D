@@ -1,14 +1,17 @@
 
-#include "Window.h"
+#include "Violet.h"
 
 int main() {
-	Vi::Window::createGLFWContext("Render3D", 1920, 1080);
+	Violet::Window::create("Render3D", 1920, 1080);
 	
-	while (Vi::Window::isOpen()) {
+	Violet::Mesh mesh;
+	mesh.create();
 
+	while (Violet::Window::isOpen()) {
+		Violet::Window::pollEvents();
 	}
 
-	Vi::Window::destroyGLFWContext();
+	Violet::Window::destroy();
 	return 0;
 }
 

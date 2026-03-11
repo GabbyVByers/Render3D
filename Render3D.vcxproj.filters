@@ -7,14 +7,11 @@
     <Filter Include="Render3D">
       <UniqueIdentifier>{c6799110-b6e6-47f0-9ece-64f2789ebca5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Render3D\Header Files">
-      <UniqueIdentifier>{96950763-e3ef-4b06-802a-b1785e956f31}</UniqueIdentifier>
+    <Filter Include="Render3D\Math">
+      <UniqueIdentifier>{d15ec4d8-c8ed-458e-b4fd-38ae0660af6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Render3D\Source Files">
-      <UniqueIdentifier>{8cbbf458-fd6a-46b8-a3bd-af5bab9f6649}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Render3D\Source Files\Window">
-      <UniqueIdentifier>{1017465d-14e3-4a7b-9aa3-4217da77922d}</UniqueIdentifier>
+    <Filter Include="Render3D\Violet">
+      <UniqueIdentifier>{036266f1-2ff7-43d8-882e-36846dba9356}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,9 +39,35 @@
     <ClCompile Include="ImGui\imgui_widgets.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Window.CallBack.cpp">
-      <Filter>Render3D\Source Files\Window</Filter>
+    <ClCompile Include="Violet.Window.cpp">
+      <Filter>Render3D\Violet</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Render3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.double3.cpp">
+      <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.float4.cpp">
+      <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.Quaternion.cpp">
+      <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.float3.cpp">
+      <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.float4x4.cpp">
+      <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.double4x4.cpp">
+      <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.Trans.cpp">
+      <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Violet.Mesh.cpp">
+      <Filter>Render3D\Violet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,8 +98,11 @@
     <ClInclude Include="ImGui\imstb_truetype.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Render3D\Header Files</Filter>
+    <ClInclude Include="Math.h">
+      <Filter>Render3D\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Violet.h">
+      <Filter>Render3D\Violet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
