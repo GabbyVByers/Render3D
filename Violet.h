@@ -13,9 +13,9 @@
 #include <sstream>
 #include "Math.h"
 
-#define Violet Violet
 namespace Violet {
 
+	class Color;
 	class Vertex;
 	class Camera;
 	class Mesh;
@@ -26,88 +26,116 @@ namespace Violet {
 	class Keyboard;
 	class Window;
 
+	class Color {
+	public:
+		float r, g, b, a;
+		Color();
+		Color(float r, float g, float b, float a = 1.0f);
+		static Color white();
+		static Color black();
+		static Color red();
+		static Color green();
+		static Color blue();
+		static Color cyan();
+		static Color purple();
+		static Color yellow();
+	};
+
 	class Vertex {
 	public:
-		Math::Vec3f position;
-		Math::Color color;
+		Vec3f position;
+		Color color;
 	};
 
 	class Camera {
 	public:
-		double fov;
-		double aspect;
-		double near;
-		double far;
-		Math::Transformation trans;
+		double fov, aspect, near, far;
+		Transformation trans;
 		Camera();
 	};
 
 	class Mesh {
 	public:
-		GLuint vao;
-		GLuint vbo;
-		GLuint shader;
-		Math::Transformation trans;
+		Mesh(const std::string& path = "default", GLenum type = GL_TRIANGLES);
+		~Mesh();
+		GLuint vao, vbo, shader;
+		Transformation trans;
 		GLenum primative_type;
 		std::vector<Vertex> vertices;
-		void create(const std::string& path = "default", GLenum type = GL_TRIANGLES);
-		void destroy();
 	};
 
 	class glMouseEvent {
 	public:
-		int button;
-		int action;
-		int mods;
+		int button, action, mods;
 	};
 
 	class glScrollEvent {
 	public:
-		double xoffset;
-		double yoffset;
+		double xoffset, yoffset;
 	};
 
 	class glKeyboardEvent {
 	public:
-		int key;
-		int scancode;
-		int action;
-		int mods;
+		int key, scancode, action, mods;
 	};
 
 	class Mouse {
 	public:
-		Mouse()  = delete;
-		~Mouse() = delete;
+		static Mouse& getMouse();
+		Vec2d position() const;
+		Vec2d velocity() const;
+		bool pressing(int BUTTON) const;
+		bool clicked(int BUTTON, int ACTION) const;
+		double scroll() const;
+
 	private:
-		double xpos, ypos, xvel, yvel;
+		friend Window;
+		Mouse() {};
+		~Mouse() {};
+		void reset();
+		void pushMouseEvent(glMouseEvent mouse_event);
+		void pushScrollEvent(glScrollEvent scroll_event);
+		Vec2d pos, vel;
 		std::vector<glMouseEvent> mouse_events;
 		std::vector<glScrollEvent> scroll_events;
 	};
 
 	class Keyboard {
 	public:
-		Keyboard()  = delete;
-		~Keyboard() = delete;
+		static Keyboard& getKeyboard();
+		bool pressed(int key, int edge);
+		bool pressing(int key);
+
+	private:
+		friend Window;
+		void reset();
+		void pushKeyEvent(glKeyboardEvent& key_event);
+		Keyboard() {};
+		~Keyboard() {};
+		std::vector<glKeyboardEvent> keyboard_events;
 	};
 
 	class Window {
 	public:
-		Window()  = delete;
-		~Window() = delete;
-		static void create(std::string title, int width, int height);
-		static void destroy();
-		static void vSync(bool vsync);
-		static Math::Vec2i getWindowSize();
-		static GLFWwindow* getWindowPtr();
-		static bool isOpen();
-		static void pollEvents();
-		static void clear(Math::Color color);
-		static void draw(const Mesh& mesh, Camera& camera);
-		static void display();
+		Window(std::string title, int width, int height);
+		~Window();
+		Window(const Window& other)              = delete;
+		Window(Window&& other)                   = delete;
+		Window& operator = (const Window& other) = delete;
+		Window& operator = (Window&& other)      = delete;
+		void vSync(bool vsync);
+		Vec2i size();
+		bool isOpen();
+		void pollEvents();
+		void clear(Color color);
+		void draw(const Mesh& mesh, Camera& camera);
+		void display();
 
 	private:
+		friend Mouse;
+		friend Keyboard;
 		inline static GLFWwindow* window_ptr = nullptr;
+		static GLFWwindow* getGLFWptr();
 		static void callBackWindowResize(GLFWwindow* window_ptr, int width, int height);
 		static void callBackKeyboard(GLFWwindow* window_ptr, int key, int scancode, int action, int mods);
 		static void callBackMouse(GLFWwindow* window_ptr, int button, int action, int mods);

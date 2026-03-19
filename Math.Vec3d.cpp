@@ -1,67 +1,65 @@
 
 #include "Math.h"
 
-Math::Vec3d::Vec3d() {
-	x = 0.0f;
-	y = 0.0f;
-	z = 0.0f;
+Violet::Vec3d::Vec3d() {
+	x = 0.0;
+	y = 0.0;
+	z = 0.0;
 }
 
-Math::Vec3d::Vec3d(double x, double y, double z) {
+Violet::Vec3d::Vec3d(double x, double y, double z) {
 	this->x = x;
 	this->y = y;
 	this->z = z;
 }
 
-Math::Vec3d::Vec3d(const Quaternion& quat, const Vec3d& basis_dir) {
-	Quaternion quat_inv = quat.complexConjugate();
-	Quaternion p = Quaternion(0.0, basis_dir.x, basis_dir.y, basis_dir.z);
-	Quaternion result = quat * p * quat_inv;
-	x = result.x;
-	y = result.y;
-	z = result.z;
+double Violet::Vec3d::lengthSq(const Vec3d& vec) {
+	return (vec.x * vec.x) + (vec.y * vec.y) + (vec.z * vec.z);
 }
 
-Math::Vec3d Math::Vec3d::operator +  (const Vec3d& vec)   const { return { x + vec.x, y + vec.y, z + vec.z, }; }
-Math::Vec3d Math::Vec3d::operator -  (const Vec3d& vec)   const { return { x - vec.x, y - vec.y, z - vec.z, }; }
-Math::Vec3d Math::Vec3d::operator *  (const double scale) const { return { x * scale, y * scale, z * scale, }; }
-Math::Vec3d Math::Vec3d::operator /  (const double scale) const { return { x / scale, y / scale, z / scale, }; }
-void        Math::Vec3d::operator += (const Vec3d& vec)   { x += vec.x; y += vec.y; z += vec.z; }
-void        Math::Vec3d::operator -= (const Vec3d& vec)   { x -= vec.x; y -= vec.y; z -= vec.z; }
-void        Math::Vec3d::operator *= (const double scale) { x *= scale; y *= scale; z *= scale; }
-void        Math::Vec3d::operator /= (const double scale) { x /= scale; y /= scale; z /= scale; }
-
-Math::Vec3d Math::Vec3d::rotated(const Vec3d& axis, double theta) const {
-	Quaternion rotation = Quaternion(axis, theta);
-	return Vec3d(rotation, (*this));
+double Violet::Vec3d::length(const Vec3d& vec) {
+	return sqrt(lengthSq(vec));
 }
 
-Math::Vec3d Math::Vec3d::normalized() const {
-	double len = length();
+void Violet::Vec3d::normalize() {
+	double len = Vec3d::length(*this);
+	x /= len;
+	y /= len;
+	z /= len;
+}
+
+void Violet::Vec3d::rotate(const Vec3d& axis, double theta) {
+	Quaternion rotation = Quaternion::buildRotationQuaternion(axis, theta);
+	rotate(rotation);
+}
+
+void Violet::Vec3d::rotate(const Quaternion& quat) {
+	Quaternion q_inv = Quaternion::complexConjugate(quat);
+	Quaternion p = { 0.0, x, y, z };
+	Quaternion qpq_inv = quat * p * q_inv;
+	x = qpq_inv.x;
+	y = qpq_inv.y;
+	z = qpq_inv.z;
+}
+
+double Violet::Vec3d::dot(const Vec3d& a, const Vec3d& b) {
+	return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
+}
+
+Violet::Vec3d Violet::Vec3d::cross(const Vec3d& a, const Vec3d& b) {
 	return {
-		x / len,
-		y / len,
-		z / len
+		(a.y * b.z) - (a.z * b.y),
+		(a.z * b.x) - (a.x * b.z),
+		(a.x * b.y) - (a.y * b.x)
 	};
 }
 
-double Math::Vec3d::lengthSq() const {
-	return (x * x) + (y * y) + (z * z);
-}
-
-double Math::Vec3d::length() const {
-	return sqrt(lengthSq());
-}
-
-double Math::Vec3d::dot(const Vec3d& vec) const {
-	return (x * vec.x) + (y * vec.y) + (z * vec.z);
-}
-
-Math::Vec3d Math::Vec3d::cross(const Vec3d& vec) const {
-	return {
-		(y * vec.z) - (z * vec.y),
-		(z * vec.x) - (x * vec.z),
-		(x * vec.y) - (y * vec.x)
-	};
-}
+Violet::Vec3d Violet::Vec3d::operator +  (const Vec3d& vec)   const { return { x + vec.x, y + vec.y, z + vec.z }; }
+Violet::Vec3d Violet::Vec3d::operator -  (const Vec3d& vec)   const { return { x - vec.x, y - vec.y, z - vec.z }; }
+Violet::Vec3d Violet::Vec3d::operator *  (const double scale) const { return { x * scale, y * scale, z * scale }; }
+Violet::Vec3d Violet::Vec3d::operator /  (const double scale) const { return { x / scale, y / scale, z / scale }; }
+void          Violet::Vec3d::operator += (const Vec3d& vec)   { x += vec.x; y += vec.y; z += vec.z; }
+void          Violet::Vec3d::operator -= (const Vec3d& vec)   { x -= vec.x; y -= vec.y; z -= vec.z; }
+void          Violet::Vec3d::operator *= (const double scale) { x *= scale; y *= scale; z *= scale; }
+void          Violet::Vec3d::operator /= (const double scale) { x /= scale; y /= scale; z /= scale; }
 

@@ -2,7 +2,7 @@
 #include "Violet.h"
 
 Violet::Camera::Camera() {
-	fov = Math::Pi64 / 4.0;
+	fov = Violet::Pi64 / 4.0;
 
 
 }

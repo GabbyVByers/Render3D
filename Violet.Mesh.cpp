@@ -8,7 +8,7 @@ static std::string loadFileAsString(std::string file_path) {
 	return buffer.str();
 }
 
-void Violet::Mesh::create(const std::string& path, GLenum type) {
+Violet::Mesh::Mesh(const std::string& path, GLenum type) {
 	primative_type = type;
 	glGenVertexArrays(1, &vao);
 	glGenBuffers(1, &vbo);
@@ -41,7 +41,7 @@ void Violet::Mesh::create(const std::string& path, GLenum type) {
 	glDeleteShader(frag_program);
 }
 
-void Violet::Mesh::destroy() {
+Violet::Mesh::~Mesh() {
 	glDeleteProgram(shader);
 	glDeleteBuffers(1, &vbo);
 	glDeleteVertexArrays(1, &vao);

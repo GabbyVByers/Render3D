@@ -42,16 +42,13 @@
     <ClCompile Include="ImGui\imgui_widgets.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Window.cpp">
+    <ClCompile Include="Violet.Window.Public.cpp">
       <Filter>Render3D\Violet</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Render3D</Filter>
     </ClCompile>
     <ClCompile Include="Math.Vec3d.cpp">
-      <Filter>Render3D\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Math.Color.cpp">
       <Filter>Render3D\Math</Filter>
     </ClCompile>
     <ClCompile Include="Math.Quaternion.cpp">
@@ -80,6 +77,24 @@
     </ClCompile>
     <ClCompile Include="Math.Vec2i.cpp">
       <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Violet.Window.Special.cpp">
+      <Filter>Render3D\Violet</Filter>
+    </ClCompile>
+    <ClCompile Include="Violet.Window.Private.cpp">
+      <Filter>Render3D\Violet</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.Vec2d.cpp">
+      <Filter>Render3D\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Violet.Mouse.cpp">
+      <Filter>Render3D\Violet</Filter>
+    </ClCompile>
+    <ClCompile Include="Violet.Keyboard.cpp">
+      <Filter>Render3D\Violet</Filter>
+    </ClCompile>
+    <ClCompile Include="Violet.Color.cpp">
+      <Filter>Render3D\Violet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

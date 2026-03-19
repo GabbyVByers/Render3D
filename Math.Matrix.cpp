@@ -1,7 +1,16 @@
 
 #include "Math.h"
 
-Math::Matrix::Matrix(
+Violet::Matrix::Matrix() {
+	(*this) = {
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	};
+}
+
+Violet::Matrix::Matrix(
 	double a, double b, double c, double d,
 	double e, double f, double g, double h,
 	double i, double j, double k, double l,
@@ -13,18 +22,9 @@ Math::Matrix::Matrix(
 	data[3][0] = m; data[3][1] = n; data[3][2] = o; data[3][3] = p;
 }
 
-Math::Matrix::Matrix() {
-	(*this) = Matrix{
-		1, 0, 0, 0,
-		0, 1, 0, 0,
-		0, 0, 1, 0,
-		0, 0, 0, 1
-	};
-}
-
-Math::Matrix::Matrix(double scale) {
-	const double s = scale;
-	(*this) = Matrix{
+Violet::Matrix Violet::Matrix::buildScalarMatrix(double scale) {
+	double s = scale;
+	return {
 		s, 0, 0, 0,
 		0, s, 0, 0,
 		0, 0, s, 0,
@@ -32,11 +32,11 @@ Math::Matrix::Matrix(double scale) {
 	};
 }
 
-Math::Matrix::Matrix(const Vec3d& position) {
+Violet::Matrix Violet::Matrix::buildTranslationMatrix(const Violet::Vec3d& position) {
 	const double x = position.x;
 	const double y = position.y;
 	const double z = position.z;
-	(*this) = Matrix{
+	return {
 		1, 0, 0, x,
 		0, 1, 0, y,
 		0, 0, 1, z,
@@ -44,8 +44,9 @@ Math::Matrix::Matrix(const Vec3d& position) {
 	};
 }
 
-Math::Matrix::Matrix(const Quaternion& rotation) {
-	Quaternion rot = rotation.normalized();
+Violet::Matrix Violet::Matrix::buildRotationMatrix(const Violet::Quaternion& rotation) {
+	Quaternion rot = rotation;
+	rot.normalize();
 	double xw = rot.x * rot.w;
 	double xx = rot.x * rot.x;
 	double xy = rot.x * rot.y;
@@ -55,7 +56,7 @@ Math::Matrix::Matrix(const Quaternion& rotation) {
 	double yz = rot.y * rot.z;
 	double zw = rot.z * rot.w;
 	double zz = rot.z * rot.z;
-	(*this) = {
+	return {
 		1 - 2 * (yy + zz), 2 * (xy - zw), 2 * (xz + yw), 0,
 		2 * (xy + zw), 1 - 2 * (xx + zz), 2 * (yz - xw), 0,
 		2 * (xz - yw), 2 * (yz + xw), 1 - 2 * (xx + yy), 0,
@@ -63,7 +64,7 @@ Math::Matrix::Matrix(const Quaternion& rotation) {
 	};
 }
 
-Math::Matrix Math::Matrix::operator * (const Matrix& matrix) const {
+Violet::Matrix Violet::Matrix::operator * (const Matrix& matrix) const {
 	Matrix result;
 	for (size_t i = 0; i < 4; i++) {
 		for (size_t j = 0; j < 4; j++) {
