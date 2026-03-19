@@ -9,8 +9,12 @@ int main() {
 	Vi::Mouse& mouse = Vi::Mouse::getMouse();
 	Vi::Keyboard& keyboard = Vi::Keyboard::getKeyboard();
 
-	Vi::Mesh mesh;
 	Vi::Camera camera;
+	Vi::Mesh mesh;
+
+	mesh.vertices.push_back(Vi::Vertex(Vi::Vec3f(1.0f, 1.0, -0.5), Vi::Color::random()));
+	mesh.vertices.push_back(Vi::Vertex(Vi::Vec3f(-1.0f, 1.0, -0.5), Vi::Color::random()));
+	mesh.vertices.push_back(Vi::Vertex(Vi::Vec3f(0.0f, -1.0, -0.5), Vi::Color::random()));
 
 	while (window.isOpen()) {
 		window.pollEvents();
@@ -51,8 +55,8 @@ int main() {
 		if (keyboard.pressing(GLFW_KEY_A))
 			std::cout << "A Button Being Held Down\n";
 
-		window.draw(mesh, camera);
 		window.clear(Violet::Color(0.2, 0.2, 0.4));
+		window.draw(mesh, camera);
 		window.display();
 	}
 

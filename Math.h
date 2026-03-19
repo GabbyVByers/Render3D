@@ -15,7 +15,6 @@ namespace Violet {
 	class Matrix;
 	class Matrix_f;
 	class Quaternion;
-	class Transformation;
 
 	class Vec2i {
 	public:
@@ -132,15 +131,6 @@ namespace Violet {
 		static Quaternion buildRotationQuaternion(const Vec3d& axis, double theta);
 		static Quaternion complexConjugate(const Quaternion& quat);
 		Quaternion operator * (const Quaternion& q) const;
-	};
-
-	class Transformation {
-	public:
-		double scale;
-		Vec3d position;
-		Quaternion orientation;
-		static Matrix buildModelMatrix(const Transformation& trans);
-		static Matrix buildViewMatrix(const Transformation& trans);
 	};
 }
 

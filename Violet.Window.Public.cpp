@@ -34,13 +34,16 @@ void Violet::Window::draw(const Mesh& mesh, Camera& camera) {
 	const GLuint shader = mesh.shader;
 	const std::vector<Vertex>& vertices = mesh.vertices;
 
+	if (vertices.size() == 0)
+		return;
+
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glUseProgram(shader);
 
-	Matrix model_matrix = Transformation::buildModelMatrix(mesh.trans);
-	Matrix view_matrix  = Transformation::buildViewMatrix(camera.trans);
-	Matrix projection_matrix = Camera::buildProjectionMatrix(camera, Window::getDisplaySize());
+	Matrix model_matrix = mesh.buildModelMatrix();
+	Matrix view_matrix  = camera.buildViewMatrix();
+	Matrix projection_matrix = camera.buildProjectionMatrix(Window::getDisplaySize());
 
 	Matrix model_view_project = projection_matrix * view_matrix * model_matrix;
 	Matrix_f mvp_float(model_view_project);

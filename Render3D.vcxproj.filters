@@ -16,6 +16,9 @@
     <Filter Include="Render3D\Shaders">
       <UniqueIdentifier>{1f78c8c2-bd11-4fe3-a4ac-f22616396c0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Render3D\Shape">
+      <UniqueIdentifier>{5d2cb3cf-046e-4583-a157-84ee7c8ea920}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL\glad.c">
@@ -63,9 +66,6 @@
     <ClCompile Include="Math.Matrix.cpp">
       <Filter>Render3D\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Transformation.cpp">
-      <Filter>Render3D\Math</Filter>
-    </ClCompile>
     <ClCompile Include="Violet.Mesh.cpp">
       <Filter>Render3D\Violet</Filter>
     </ClCompile>
@@ -94,6 +94,9 @@
       <Filter>Render3D\Violet</Filter>
     </ClCompile>
     <ClCompile Include="Violet.Color.cpp">
+      <Filter>Render3D\Violet</Filter>
+    </ClCompile>
+    <ClCompile Include="Violet.Mesh.Shapes.cpp">
       <Filter>Render3D\Violet</Filter>
     </ClCompile>
   </ItemGroup>

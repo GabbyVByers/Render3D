@@ -31,6 +31,7 @@ namespace Violet {
 		float r, g, b, a;
 		Color();
 		Color(float r, float g, float b, float a = 1.0f);
+		static Color random();
 		static Color white();
 		static Color black();
 		static Color red();
@@ -50,19 +51,29 @@ namespace Violet {
 	class Camera {
 	public:
 		double fov_degrees, near, far;
-		Transformation trans;
+		Vec3d position;
+		Quaternion orientation;
 		Camera();
-		static Matrix buildProjectionMatrix(const Camera& camera, const Vec2i& window_size);
+		Matrix buildViewMatrix() const;
+		Matrix buildProjectionMatrix(const Vec2i& window_size) const;
 	};
 
 	class Mesh {
 	public:
-		GLuint vao, vbo, shader;
-		Transformation trans;
-		GLenum primative_type;
+		double scale;
+		Vec3d position;
+		Quaternion orientation;
 		std::vector<Vertex> vertices;
 		Mesh(const std::string& path = "default", GLenum type = GL_TRIANGLES);
 		~Mesh();
+		Matrix buildModelMatrix() const;
+		void cube(double radius, int divisions);
+		void sphere(double radius, int divisions);
+
+	private:
+		friend Window;
+		GLuint vao, vbo, shader;
+		GLenum primative_type;
 	};
 
 	class glMouseEvent {

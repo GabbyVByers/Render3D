@@ -9,6 +9,7 @@ static std::string loadFileAsString(std::string file_path) {
 }
 
 Violet::Mesh::Mesh(const std::string& path, GLenum type) {
+	scale = 1.0;
 	primative_type = type;
 	glGenVertexArrays(1, &vao);
 	glGenBuffers(1, &vbo);
@@ -45,5 +46,12 @@ Violet::Mesh::~Mesh() {
 	glDeleteProgram(shader);
 	glDeleteBuffers(1, &vbo);
 	glDeleteVertexArrays(1, &vao);
+}
+
+Violet::Matrix Violet::Mesh::buildModelMatrix() const {
+	Matrix scalar_matrix      = Matrix::buildScalarMatrix(scale);
+	Matrix translation_matrix = Matrix::buildTranslationMatrix(position);
+	Matrix rotation_matrix    = Matrix::buildRotationMatrix(orientation);
+	return translation_matrix * scalar_matrix * rotation_matrix;
 }
 

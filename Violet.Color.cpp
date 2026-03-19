@@ -15,6 +15,15 @@ Violet::Color::Color(float r, float g, float b, float a) {
 	this->a = a;
 }
 
+Violet::Color Violet::Color::random() {
+	return {
+		(float)rand() / (float)RAND_MAX,
+		(float)rand() / (float)RAND_MAX,
+		(float)rand() / (float)RAND_MAX,
+		1.0
+	};
+}
+
 Violet::Color Violet::Color::white()  { return { 1.0f, 1.0f, 1.0f, 1.0f }; }
 Violet::Color Violet::Color::black()  { return { 0.0f, 0.0f, 0.0f, 1.0f }; }
 Violet::Color Violet::Color::red()    { return { 1.0f, 0.0f, 0.0f, 1.0f }; }
