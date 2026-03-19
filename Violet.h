@@ -49,19 +49,20 @@ namespace Violet {
 
 	class Camera {
 	public:
-		double fov, aspect, near, far;
+		double fov_degrees, near, far;
 		Transformation trans;
 		Camera();
+		static Matrix buildProjectionMatrix(const Camera& camera, const Vec2i& window_size);
 	};
 
 	class Mesh {
 	public:
-		Mesh(const std::string& path = "default", GLenum type = GL_TRIANGLES);
-		~Mesh();
 		GLuint vao, vbo, shader;
 		Transformation trans;
 		GLenum primative_type;
 		std::vector<Vertex> vertices;
+		Mesh(const std::string& path = "default", GLenum type = GL_TRIANGLES);
+		~Mesh();
 	};
 
 	class glMouseEvent {
@@ -108,10 +109,10 @@ namespace Violet {
 
 	private:
 		friend Window;
-		void reset();
-		void pushKeyEvent(glKeyboardEvent& key_event);
 		Keyboard() {};
 		~Keyboard() {};
+		void reset();
+		void pushKeyEvent(glKeyboardEvent& key_event);
 		std::vector<glKeyboardEvent> keyboard_events;
 	};
 
@@ -123,8 +124,8 @@ namespace Violet {
 		Window(Window&& other)                   = delete;
 		Window& operator = (const Window& other) = delete;
 		Window& operator = (Window&& other)      = delete;
+		static Vec2i getDisplaySize();
 		void vSync(bool vsync);
-		Vec2i size();
 		bool isOpen();
 		void pollEvents();
 		void clear(Color color);

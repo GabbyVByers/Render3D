@@ -139,8 +139,8 @@ namespace Violet {
 		double scale;
 		Vec3d position;
 		Quaternion orientation;
-		Matrix modelMatrix() const;
-		Matrix viewMatrix() const;
+		static Matrix buildModelMatrix(const Transformation& trans);
+		static Matrix buildViewMatrix(const Transformation& trans);
 	};
 }
 

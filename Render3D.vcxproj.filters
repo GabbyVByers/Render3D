@@ -132,4 +132,12 @@
       <Filter>Render3D\Violet</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="default.vert">
+      <Filter>Render3D\Shaders</Filter>
+    </None>
+    <None Include="default.frag">
+      <Filter>Render3D\Shaders</Filter>
+    </None>
+  </ItemGroup>
 </Project>

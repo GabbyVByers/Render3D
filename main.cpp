@@ -10,6 +10,8 @@ int main() {
 	Vi::Keyboard& keyboard = Vi::Keyboard::getKeyboard();
 
 	Vi::Mesh mesh;
+	Vi::Camera camera;
+
 	while (window.isOpen()) {
 		window.pollEvents();
 
@@ -42,6 +44,14 @@ int main() {
 				std::cout << "Cursor Velocity: x = " << vel.x << " y = " << vel.y << "\n";
 		}
 
+		if (keyboard.pressed(GLFW_KEY_W, GLFW_PRESS))
+			std::cout << "W key Pressed\n";
+		if (keyboard.pressed(GLFW_KEY_W, GLFW_RELEASE))
+			std::cout << "W key Released\n";
+		if (keyboard.pressing(GLFW_KEY_A))
+			std::cout << "A Button Being Held Down\n";
+
+		window.draw(mesh, camera);
 		window.clear(Violet::Color(0.2, 0.2, 0.4));
 		window.display();
 	}
