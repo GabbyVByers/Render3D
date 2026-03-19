@@ -2,6 +2,20 @@
 #include "Violet.h"
 #define Vi Violet
 
+static void controlCamera(Vi::Camera& camera) {
+
+	Vi::Mouse& mouse = Vi::Mouse::getMouse();
+
+	if (mouse.pressing(GLFW_MOUSE_BUTTON_LEFT)) {
+		Vi::Vec3d up = Vi::Vec3d(0.0, 1.0, 0.0);
+		Vi::Quaternion rot = Vi::Quaternion::buildRotationQuaternion(up, mouse.velocity().x);
+		camera.orientation = camera.orientation * rot;
+	}
+
+
+	camera.position = camera.forwardDirection() * -1.0;
+}
+
 int main() {
 	Vi::Window window = Vi::Window("Render3D", 1920, 1080);
 	window.vSync(false);
@@ -11,10 +25,10 @@ int main() {
 
 	Vi::Camera camera;
 	Vi::Mesh mesh;
+	mesh.sphere(1.0, 10);
+	mesh.position.z -= 3.0;
 
-	mesh.vertices.push_back(Vi::Vertex(Vi::Vec3f(1.0f, 1.0, -0.5), Vi::Color::random()));
-	mesh.vertices.push_back(Vi::Vertex(Vi::Vec3f(-1.0f, 1.0, -0.5), Vi::Color::random()));
-	mesh.vertices.push_back(Vi::Vertex(Vi::Vec3f(0.0f, -1.0, -0.5), Vi::Color::random()));
+
 
 	while (window.isOpen()) {
 		window.pollEvents();

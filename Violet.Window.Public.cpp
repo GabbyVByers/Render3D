@@ -47,7 +47,7 @@ void Violet::Window::draw(const Mesh& mesh, Camera& camera) {
 
 	Matrix model_view_project = projection_matrix * view_matrix * model_matrix;
 	Matrix_f mvp_float(model_view_project);
-	glUniformMatrix4fv(glGetUniformLocation(shader, "uModelViewProject"), 1, GL_FALSE, &mvp_float.data[0][0]);
+	glUniformMatrix4fv(glGetUniformLocation(shader, "uModelViewProject"), 1, GL_TRUE, &mvp_float.data[0][0]);
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_DYNAMIC_DRAW);
 	glDrawArrays(mesh.primative_type, 0, (GLsizei)vertices.size());

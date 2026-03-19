@@ -54,6 +54,9 @@ namespace Violet {
 		Vec3d position;
 		Quaternion orientation;
 		Camera();
+		Vec3d forwardDirection() const;
+		Vec3d upDirection() const;
+		Vec3d rightDirection() const;
 		Matrix buildViewMatrix() const;
 		Matrix buildProjectionMatrix(const Vec2i& window_size) const;
 	};
