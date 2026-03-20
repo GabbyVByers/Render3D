@@ -1,5 +1,5 @@
 
-#include "Violet.h"
+#include "Window.h"
 
 Violet::Window::Window(std::string title, int width, int height) {
 	glfwInit();
@@ -26,7 +26,7 @@ Violet::Window::Window(std::string title, int width, int height) {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
-	io.FontGlobalScale = 2.0f;
+	io.FontGlobalScale = 1.0f;
 	io.IniFilename = nullptr;
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(window_ptr, true);

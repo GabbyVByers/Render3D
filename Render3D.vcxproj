@@ -159,26 +159,28 @@
     <ClCompile Include="ImGui\imgui_tables.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Math.Vec2d.cpp" />
-    <ClCompile Include="Math.Vec3d.cpp" />
-    <ClCompile Include="Math.Matrix.cpp" />
-    <ClCompile Include="Math.Vec3f.cpp" />
-    <ClCompile Include="Violet.Mesh.Shapes.cpp" />
-    <ClCompile Include="Violet.Color.cpp" />
-    <ClCompile Include="Math.Matrix_f.cpp" />
-    <ClCompile Include="Math.Quaternion.cpp" />
-    <ClCompile Include="Math.Vec2i.cpp" />
-    <ClCompile Include="Math.Vec3i.cpp" />
+    <ClCompile Include="Vector.Vec2d.cpp" />
+    <ClCompile Include="Vector.Vec2f.cpp" />
+    <ClCompile Include="Vector.Vec3d.cpp" />
+    <ClCompile Include="Matrix.Matrix.cpp" />
+    <ClCompile Include="Vector.Vec3f.cpp" />
+    <ClCompile Include="Mesh.Color.cpp" />
+    <ClCompile Include="Matrix.Matrix_f.cpp" />
+    <ClCompile Include="Quaternion.cpp" />
+    <ClCompile Include="Vector.Vec2i.cpp" />
+    <ClCompile Include="Vector.Vec3i.cpp" />
     <ClCompile Include="OpenGL\glad.c" />
-    <ClCompile Include="Violet.Camera.cpp" />
-    <ClCompile Include="Violet.Keyboard.cpp" />
-    <ClCompile Include="Violet.Mesh.cpp" />
-    <ClCompile Include="Violet.Mouse.cpp" />
-    <ClCompile Include="Violet.Window.Private.cpp" />
-    <ClCompile Include="Violet.Window.Public.cpp" />
-    <ClCompile Include="Violet.Window.Special.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Window.Keyboard.cpp" />
+    <ClCompile Include="Mesh.Mesh.cpp" />
+    <ClCompile Include="Window.Mouse.cpp" />
+    <ClCompile Include="Window.Private.cpp" />
+    <ClCompile Include="Window.Public.cpp" />
+    <ClCompile Include="Window.Special.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Core.h" />
     <ClInclude Include="ImGui\imconfig.h" />
     <ClInclude Include="ImGui\imgui.h" />
     <ClInclude Include="ImGui\imgui_impl_glfw.h" />
@@ -188,8 +190,13 @@
     <ClInclude Include="ImGui\imstb_rectpack.h" />
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
-    <ClInclude Include="Math.h" />
+    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="Vector.h" />
     <ClInclude Include="Violet.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag" />

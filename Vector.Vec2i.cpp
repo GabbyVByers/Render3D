@@ -1,5 +1,5 @@
 
-#include "Math.h"
+#include "Vector.h"
 
 Violet::Vec2i::Vec2i() {
 	x = 0;
@@ -7,8 +7,8 @@ Violet::Vec2i::Vec2i() {
 }
 
 Violet::Vec2i::Vec2i(int x, int y) {
-	this -> x = x;
-	this -> y = y;
+	this->x = x;
+	this->y = y;
 }
 
 Violet::Vec2i Violet::Vec2i::operator +  (const Vec2i& vec) const { return { x + vec.x, y + vec.y }; }

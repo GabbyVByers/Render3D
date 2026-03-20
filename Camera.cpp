@@ -1,5 +1,9 @@
 
-#include "Violet.h"
+#include "Camera.h"
+#include "Vector.h"
+#include "Matrix.h"
+#include "Quaternion.h"
+#include <cmath>
 
 Violet::Camera::Camera() {
 	fov_degrees = 100.0;
@@ -25,13 +29,13 @@ Violet::Vec3d Violet::Camera::rightDirection() const {
 	return right;
 }
 
-Violet::Matrix Violet::Camera::buildViewMatrix() const {
+Violet::Matrix Violet::Camera::viewMatrix() const {
 	Matrix translation_matrix_inverse = Matrix::buildTranslationMatrix(position);
-	Matrix rotation_matrix_inverse = Matrix::buildRotationMatrix(Quaternion::complexConjugate(orientation));
+	Matrix rotation_matrix_inverse    = Matrix::buildRotationMatrix(Quaternion::complexConjugate(orientation));
 	return rotation_matrix_inverse * translation_matrix_inverse;
 }
 
-Violet::Matrix Violet::Camera::buildProjectionMatrix(const Vec2i& window_size) const {
+Violet::Matrix Violet::Camera::projectionMatrix(const Vec2i& window_size) const {
 	int width = window_size.x;
 	int height = window_size.y;
 	if (height == 0)

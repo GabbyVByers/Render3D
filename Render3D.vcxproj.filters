@@ -7,17 +7,17 @@
     <Filter Include="Render3D">
       <UniqueIdentifier>{c6799110-b6e6-47f0-9ece-64f2789ebca5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Render3D\Math">
-      <UniqueIdentifier>{d15ec4d8-c8ed-458e-b4fd-38ae0660af6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Render3D\Violet">
-      <UniqueIdentifier>{036266f1-2ff7-43d8-882e-36846dba9356}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render3D\Shaders">
       <UniqueIdentifier>{1f78c8c2-bd11-4fe3-a4ac-f22616396c0c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Render3D\Shape">
-      <UniqueIdentifier>{5d2cb3cf-046e-4583-a157-84ee7c8ea920}</UniqueIdentifier>
+    <Filter Include="Render3D\Header Files">
+      <UniqueIdentifier>{ef073757-e763-41ba-a7ac-7fb79797ca9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render3D\Source Files">
+      <UniqueIdentifier>{bd3632e3-ff54-4eae-a2c7-d0608094c633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render3D\Header Files\Core">
+      <UniqueIdentifier>{557a7de3-e9a8-413a-a2fd-c269fb690348}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,59 +45,59 @@
     <ClCompile Include="ImGui\imgui_widgets.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Window.Public.cpp">
-      <Filter>Render3D\Violet</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Render3D</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Vec3d.cpp">
-      <Filter>Render3D\Math</Filter>
+    <ClCompile Include="Vector.Vec2d.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Quaternion.cpp">
-      <Filter>Render3D\Math</Filter>
+    <ClCompile Include="Vector.Vec2f.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Vec3f.cpp">
-      <Filter>Render3D\Math</Filter>
+    <ClCompile Include="Vector.Vec2i.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Matrix_f.cpp">
-      <Filter>Render3D\Math</Filter>
+    <ClCompile Include="Vector.Vec3d.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Matrix.cpp">
-      <Filter>Render3D\Math</Filter>
+    <ClCompile Include="Vector.Vec3f.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Mesh.cpp">
-      <Filter>Render3D\Violet</Filter>
+    <ClCompile Include="Vector.Vec3i.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Camera.cpp">
-      <Filter>Render3D\Violet</Filter>
+    <ClCompile Include="Mesh.Mesh.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Vec3i.cpp">
-      <Filter>Render3D\Math</Filter>
+    <ClCompile Include="Mesh.Color.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Vec2i.cpp">
-      <Filter>Render3D\Math</Filter>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Window.Special.cpp">
-      <Filter>Render3D\Violet</Filter>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Window.Private.cpp">
-      <Filter>Render3D\Violet</Filter>
+    <ClCompile Include="Matrix.Matrix_f.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Math.Vec2d.cpp">
-      <Filter>Render3D\Math</Filter>
+    <ClCompile Include="Matrix.Matrix.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Mouse.cpp">
-      <Filter>Render3D\Violet</Filter>
+    <ClCompile Include="Window.Keyboard.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Keyboard.cpp">
-      <Filter>Render3D\Violet</Filter>
+    <ClCompile Include="Window.Mouse.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Color.cpp">
-      <Filter>Render3D\Violet</Filter>
+    <ClCompile Include="Window.Private.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Mesh.Shapes.cpp">
-      <Filter>Render3D\Violet</Filter>
+    <ClCompile Include="Window.Public.cpp">
+      <Filter>Render3D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.Special.cpp">
+      <Filter>Render3D\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,11 +128,32 @@
     <ClInclude Include="ImGui\imstb_truetype.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="Math.h">
-      <Filter>Render3D\Math</Filter>
+    <ClInclude Include="Mesh.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Violet.h">
-      <Filter>Render3D\Violet</Filter>
+      <Filter>Render3D\Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Render3D\Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

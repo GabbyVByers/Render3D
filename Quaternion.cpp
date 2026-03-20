@@ -1,5 +1,6 @@
 
-#include "Math.h"
+#include "Quaternion.h"
+#include "Vector.h"
 
 Violet::Quaternion::Quaternion() {
 	w = 1.0;

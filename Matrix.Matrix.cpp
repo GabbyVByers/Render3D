@@ -1,5 +1,7 @@
 
-#include "Math.h"
+#include "Matrix.h"
+#include "Vector.h"
+#include "Quaternion.h"
 
 Violet::Matrix::Matrix() {
 	(*this) = {

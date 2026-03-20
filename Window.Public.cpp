@@ -1,7 +1,8 @@
 
-#include "Violet.h"
+#include "Window.h"
+#include "Mesh.h"
 
-Violet::Vec2i Violet::Window::getDisplaySize() {
+Violet::Vec2i Violet::Window::size() {
 	int x, y; glfwGetFramebufferSize(window_ptr, &x, &y);
 	return { x, y };
 }
@@ -41,9 +42,9 @@ void Violet::Window::draw(const Mesh& mesh, Camera& camera) {
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glUseProgram(shader);
 
-	Matrix model_matrix = mesh.buildModelMatrix();
-	Matrix view_matrix  = camera.buildViewMatrix();
-	Matrix projection_matrix = camera.buildProjectionMatrix(Window::getDisplaySize());
+	Matrix model_matrix = mesh.modelMatrix();
+	Matrix view_matrix  = camera.viewMatrix();
+	Matrix projection_matrix = camera.projectionMatrix(Window::size());
 
 	Matrix model_view_project = projection_matrix * view_matrix * model_matrix;
 	Matrix_f mvp_float(model_view_project);

@@ -1,8 +1,13 @@
 
-#include "Violet.h"
+#include "Mesh.h"
+#include <fstream>
+#include <sstream>
+#include "Matrix.h"
 
 static std::string loadFileAsString(std::string file_path) {
 	std::ifstream file(file_path);
+	if (!file.is_open())
+		std::terminate();
 	std::stringstream buffer;
 	buffer << file.rdbuf();
 	return buffer.str();
@@ -29,10 +34,17 @@ Violet::Mesh::Mesh(const std::string& path, GLenum type) {
 	GLuint vert_program = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vert_program, 1, &vert_c_str, nullptr);
 	glCompileShader(vert_program);
+	GLint success;
+	glGetProgramiv(vert_program, GL_LINK_STATUS, &success);
+	if (!success)
+		std::terminate();
 
 	GLuint frag_program = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(frag_program, 1, &frag_c_str, nullptr);
 	glCompileShader(frag_program);
+	glGetProgramiv(frag_program, GL_LINK_STATUS, &success);
+	if (!success)
+		std::terminate();
 
 	shader = glCreateProgram();
 	glAttachShader(shader, vert_program);
@@ -40,6 +52,9 @@ Violet::Mesh::Mesh(const std::string& path, GLenum type) {
 	glLinkProgram(shader);
 	glDeleteShader(vert_program);
 	glDeleteShader(frag_program);
+	glGetProgramiv(shader, GL_LINK_STATUS, &success);
+	if (!success)
+		std::terminate();
 }
 
 Violet::Mesh::~Mesh() {
@@ -48,7 +63,7 @@ Violet::Mesh::~Mesh() {
 	glDeleteVertexArrays(1, &vao);
 }
 
-Violet::Matrix Violet::Mesh::buildModelMatrix() const {
+Violet::Matrix Violet::Mesh::modelMatrix() const {
 	Matrix scalar_matrix      = Matrix::buildScalarMatrix(scale);
 	Matrix translation_matrix = Matrix::buildTranslationMatrix(position);
 	Matrix rotation_matrix    = Matrix::buildRotationMatrix(orientation);

@@ -1,5 +1,5 @@
 
-#include "Violet.h"
+#include "Window.h"
 
 GLFWwindow* Violet::Window::getGLFWptr() {
 	return window_ptr;

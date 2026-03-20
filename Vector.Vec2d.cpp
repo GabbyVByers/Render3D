@@ -1,5 +1,5 @@
 
-#include "Math.h"
+#include "Vector.h"
 
 Violet::Vec2d::Vec2d() {
 	x = 0.0;
