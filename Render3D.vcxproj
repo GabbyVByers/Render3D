@@ -159,16 +159,15 @@
     <ClCompile Include="ImGui\imgui_tables.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Vector.Vec2d.cpp" />
-    <ClCompile Include="Vector.Vec2f.cpp" />
-    <ClCompile Include="Vector.Vec3d.cpp" />
-    <ClCompile Include="Matrix.Matrix.cpp" />
-    <ClCompile Include="Vector.Vec3f.cpp" />
+    <ClCompile Include="Vec2d.cpp" />
+    <ClCompile Include="Vec2f.cpp" />
+    <ClCompile Include="Vec3d.cpp" />
+    <ClCompile Include="Mat4.cpp" />
+    <ClCompile Include="Vec3f.cpp" />
     <ClCompile Include="Mesh.Color.cpp" />
-    <ClCompile Include="Matrix.Matrix_f.cpp" />
     <ClCompile Include="Quaternion.cpp" />
-    <ClCompile Include="Vector.Vec2i.cpp" />
-    <ClCompile Include="Vector.Vec3i.cpp" />
+    <ClCompile Include="Vec2i.cpp" />
+    <ClCompile Include="Vec3i.cpp" />
     <ClCompile Include="OpenGL\glad.c" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Window.Keyboard.cpp" />
@@ -194,7 +193,8 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Shape.h" />
-    <ClInclude Include="Vector.h" />
+    <ClInclude Include="Vec2.h" />
+    <ClInclude Include="Vec3.h" />
     <ClInclude Include="Violet.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

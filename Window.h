@@ -10,6 +10,7 @@
 #include "Vector.h"
 
 namespace Violet {
+
 	class glMouseEvent {
 	public:
 		int button, action, mods;

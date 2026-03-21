@@ -45,22 +45,22 @@
     <ClCompile Include="main.cpp">
       <Filter>Render3D</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.Vec2d.cpp">
+    <ClCompile Include="Vec2d.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.Vec2f.cpp">
+    <ClCompile Include="Vec2f.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.Vec2i.cpp">
+    <ClCompile Include="Vec2i.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.Vec3d.cpp">
+    <ClCompile Include="Vec3d.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.Vec3f.cpp">
+    <ClCompile Include="Vec3f.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.Vec3i.cpp">
+    <ClCompile Include="Vec3i.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.Mesh.cpp">
@@ -75,10 +75,7 @@
     <ClCompile Include="Quaternion.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix.Matrix_f.cpp">
-      <Filter>Render3D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix.Matrix.cpp">
+    <ClCompile Include="Mat4.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Window.Keyboard.cpp">
@@ -131,7 +128,7 @@
     <ClInclude Include="Quaternion.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
+    <ClInclude Include="Vec3.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
@@ -150,6 +147,9 @@
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec2.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
