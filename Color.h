@@ -2,6 +2,7 @@
 #pragma once
 
 namespace Violet {
+
 	class Color {
 	public:
 		float r, g, b, a;

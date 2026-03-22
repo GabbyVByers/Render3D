@@ -2,6 +2,10 @@
 #pragma once
 
 namespace Violet {
+
+	class Mat4;
+	class Mat4f;
+
 	class Mat4 {
 	public:
 		double data[4][4];

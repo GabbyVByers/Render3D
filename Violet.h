@@ -15,7 +15,6 @@ namespace Violet {
 
 	class Vertex;
 	class Mesh;
-
 	class Mouse;
 	class Keyboard;
 	class Window;
@@ -107,13 +106,11 @@ namespace Violet {
 		friend Mouse;
 		friend Keyboard;
 		inline static GLFWwindow* window_ptr = nullptr;
-		
 		static GLFWwindow* getGLFWptr();
 		static void callBackWindowResize(GLFWwindow* window_ptr, int width, int height);
 		static void callBackKeyboard(GLFWwindow* window_ptr, int key, int scancode, int action, int mods);
 		static void callBackMouse(GLFWwindow* window_ptr, int button, int action, int mods);
 		static void callBackMouseScroll(GLFWwindow* window_ptr, double xoffset, double yoffset);
-		
 		Window(const Window& other)              = delete;
 		Window(Window&& other)                   = delete;
 		Window& operator = (const Window& other) = delete;

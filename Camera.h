@@ -3,8 +3,6 @@
 #include "Math.h"
 
 namespace Violet {
-	constexpr double Pi64 = 3.141592653589793;
-	constexpr float  Pi32 = 3.1415927f;
 
 	class Camera {
 	public:

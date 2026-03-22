@@ -7,6 +7,8 @@
 
 namespace Violet {
 	namespace Math {
+		constexpr double Pi64 = 3.141592653589793;
+		constexpr float  Pi32 = 3.1415927f;
 
 		double hypot(const Vec2i& vec);
 		double hypot(const Vec2f& vec);

@@ -2,6 +2,7 @@
 #pragma once
 
 namespace Violet {
+
 	class Quaternion {
 	public:
 		double w, x, y, z;

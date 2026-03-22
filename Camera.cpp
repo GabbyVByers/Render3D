@@ -35,7 +35,7 @@ Violet::Mat4 Violet::Camera::projectionMatrix(const Vec2i& window_size) const {
 	if (height == 0)
 		height = 1;
 	double aspect_ratio = (double)width / (double)height;
-	double fov_radians = fov_degrees * Pi64 / 180.0;
+	double fov_radians = fov_degrees * Math::Pi64 / 180.0;
 	double f = 1.0 / tan(fov_radians / 2.0);
 	Mat4 projectionMatrix = {
 		f / aspect_ratio, 0.0, 0.0, 0.0,
