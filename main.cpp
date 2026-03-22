@@ -2,6 +2,35 @@
 #include "Violet.h"
 #include <iostream>
 
+#define Vi Violet
+static void inputTest();
+static void debugGui(Vi::Window& window, Vi::Camera& camera);
+static void controlCamera(Vi::Camera& camera);
+
+int main() {
+	Vi::Window window = Vi::Window("Render3D", 1920, 1080);
+	Vi::Camera camera;
+
+	Vi::Mesh mesh("default", GL_TRIANGLES);
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5, 0.5, 0.0), Vi::Color::random() });
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5,-0.5, 0.0), Vi::Color::random() });
+	mesh.vertices.push_back({ Vi::Vec3f( 0.5, 0.0, 0.0), Vi::Color::random() });
+
+	while (window.isOpen()) {
+		window.pollEvents();
+		window.clear(Violet::Color(0.2, 0.2, 0.4));
+
+		inputTest();
+		controlCamera(camera);
+		debugGui(window, camera);
+
+		window.draw(mesh, camera);
+		window.display();
+	}
+
+	return 0;
+}
+
 static void inputTest() {
 	Vi::Mouse& mouse = Vi::Mouse::getMouse();
 	Vi::Keyboard& keyboard = Vi::Keyboard::getKeyboard();
@@ -67,36 +96,13 @@ static void controlCamera(Vi::Camera& camera) {
 
 	if (mouse.pressing(GLFW_MOUSE_BUTTON_LEFT)) {
 		Vi::Vec3d up = Vi::Vec3d(0.0, 1.0, 0.0);
-		Vi::Quaternion rot_up = Vi::Quaternion::buildRotationQuaternion(up, (double)mouse.velocity().x * -speed);
+		Vi::Quaternion rot_up = Vi::Math::rotationQuaternion(up, (double)mouse.velocity().x * -speed);
 		camera.orientation = rot_up * camera.orientation;
 		Vi::Vec3d right = camera.rightDirection();
-		Vi::Quaternion rot_right = Vi::Quaternion::buildRotationQuaternion(right, (double)mouse.velocity().y * -speed);
+		Vi::Quaternion rot_right = Vi::Math::rotationQuaternion(right, (double)mouse.velocity().y * -speed);
 		camera.orientation = rot_right * camera.orientation;
 	}
 
 	camera.position = camera.forwardDirection() * 2.0;
-}
-
-int main() {
-	Vi::Window window = Vi::Window("Render3D", 1920, 1080);
-	Vi::Camera camera;
-	//Vi::Mesh mesh;
-	//mesh.sphere(1.0, 7);
-
-	Vi::Mesh sphere = Vi::Shape::testTriangle();
-
-	while (window.isOpen()) {
-		window.pollEvents();
-		window.clear(Violet::Color(0.2, 0.2, 0.4));
-
-		inputTest();
-		controlCamera(camera);
-		debugGui(window, camera);
-
-		window.draw(sphere, camera);
-		window.display();
-	}
-
-	return 0;
 }
 

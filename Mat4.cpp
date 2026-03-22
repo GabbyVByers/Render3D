@@ -1,9 +1,7 @@
 
-#include "Matrix.h"
-#include "Vector.h"
-#include "Quaternion.h"
+#include "Mat4.h"
 
-Violet::Matrix::Matrix() {
+Violet::Mat4::Mat4() {
 	(*this) = {
 		1, 0, 0, 0,
 		0, 1, 0, 0,
@@ -12,7 +10,7 @@ Violet::Matrix::Matrix() {
 	};
 }
 
-Violet::Matrix::Matrix(
+Violet::Mat4::Mat4(
 	double a, double b, double c, double d,
 	double e, double f, double g, double h,
 	double i, double j, double k, double l,
@@ -24,50 +22,8 @@ Violet::Matrix::Matrix(
 	data[3][0] = m; data[3][1] = n; data[3][2] = o; data[3][3] = p;
 }
 
-Violet::Matrix Violet::Matrix::buildScalarMatrix(double scale) {
-	double s = scale;
-	return {
-		s, 0, 0, 0,
-		0, s, 0, 0,
-		0, 0, s, 0,
-		0, 0, 0, 1
-	};
-}
-
-Violet::Matrix Violet::Matrix::buildTranslationMatrix(const Violet::Vec3d& position) {
-	const double x = position.x;
-	const double y = position.y;
-	const double z = position.z;
-	return {
-		1, 0, 0, x,
-		0, 1, 0, y,
-		0, 0, 1, z,
-		0, 0, 0, 1
-	};
-}
-
-Violet::Matrix Violet::Matrix::buildRotationMatrix(const Violet::Quaternion& rotation) {
-	Quaternion rot = rotation;
-	rot.normalize();
-	double xw = rot.x * rot.w;
-	double xx = rot.x * rot.x;
-	double xy = rot.x * rot.y;
-	double xz = rot.x * rot.z;
-	double yw = rot.y * rot.w;
-	double yy = rot.y * rot.y;
-	double yz = rot.y * rot.z;
-	double zw = rot.z * rot.w;
-	double zz = rot.z * rot.z;
-	return {
-		1 - 2 * (yy + zz), 2 * (xy - zw), 2 * (xz + yw), 0,
-		2 * (xy + zw), 1 - 2 * (xx + zz), 2 * (yz - xw), 0,
-		2 * (xz - yw), 2 * (yz + xw), 1 - 2 * (xx + yy), 0,
-		0, 0, 0, 1
-	};
-}
-
-Violet::Matrix Violet::Matrix::operator * (const Matrix& matrix) const {
-	Matrix result;
+Violet::Mat4 Violet::Mat4::operator * (const Mat4& matrix) const {
+	Mat4 result;
 	for (size_t i = 0; i < 4; i++) {
 		for (size_t j = 0; j < 4; j++) {
 			double sum = 0.0;
@@ -78,5 +34,14 @@ Violet::Matrix Violet::Matrix::operator * (const Matrix& matrix) const {
 		}
 	}
 	return result;
+}
+
+Violet::Mat4f::Mat4f() {
+	for (size_t i = 0; i < 4; i++) {
+		for (size_t j = 0; j < 4; j++) {
+			data[i][j] = 0.0f;
+		}
+		data[i][i] = 1.0f;
+	}
 }
 

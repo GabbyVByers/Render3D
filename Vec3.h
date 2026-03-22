@@ -3,6 +3,10 @@
 
 namespace Violet {
 
+	class Vec3i;
+	class Vec3f;
+	class Vec3d;
+
 	class Vec3i {
 	public:
 		int x, y, z;
@@ -50,16 +54,6 @@ namespace Violet {
 		double x, y, z;
 		Vec3d();
 		Vec3d(double x, double y, double z);
-
-		/*
-		void normalize();
-		void rotate(const Vec3d& axis, double theta);
-		void rotate(const Quaternion& quat);
-		static double lengthSq(const Vec3d& vec);
-		static double length(const Vec3d& vec);
-		static double dot(const Vec3d& a, const Vec3d& b);
-		static Vec3d cross(const Vec3d& a, const Vec3d& b);
-		*/
 
 		Vec3d& operator = (const Vec3i& vec);
 		Vec3d& operator = (const Vec3f& vec);

@@ -1,8 +1,7 @@
 
-#include "Mesh.h"
+#include "Violet.h"
 #include <fstream>
 #include <sstream>
-#include "Matrix.h"
 
 static std::string loadFileAsString(std::string file_path) {
 	std::ifstream file(file_path);
@@ -63,10 +62,10 @@ Violet::Mesh::~Mesh() {
 	glDeleteVertexArrays(1, &vao);
 }
 
-Violet::Matrix Violet::Mesh::modelMatrix() const {
-	Matrix scalar_matrix      = Matrix::buildScalarMatrix(scale);
-	Matrix translation_matrix = Matrix::buildTranslationMatrix(position);
-	Matrix rotation_matrix    = Matrix::buildRotationMatrix(orientation);
+Violet::Mat4 Violet::Mesh::modelMatrix() const {
+	Mat4 scalar_matrix      = Math::scalarMatrix(scale);
+	Mat4 translation_matrix = Math::translationMatrix(position);
+	Mat4 rotation_matrix    = Math::rotationMatrix(orientation);
 	return translation_matrix * scalar_matrix * rotation_matrix;
 }
 

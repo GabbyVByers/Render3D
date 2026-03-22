@@ -12,12 +12,13 @@ namespace Violet {
 			double i, double j, double k, double l,
 			double m, double n, double o, double p
 		);
-		/*
-		static Matrix buildScalarMatrix(double scale);
-		static Matrix buildTranslationMatrix(const Vec3d& position);
-		static Matrix buildRotationMatrix(const Quaternion& rotation);
-		*/
 		Mat4 operator * (const Mat4& matrix) const;
+	};
+
+	class Mat4f {
+	public:
+		float data[4][4];
+		Mat4f();
 	};
 }
 

@@ -3,6 +3,10 @@
 
 namespace Violet {
 
+	class Vec2i;
+	class Vec2f;
+	class Vec2d;
+
 	class Vec2i {
 	public:
 		int x, y;

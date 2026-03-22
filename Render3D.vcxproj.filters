@@ -63,10 +63,10 @@
     <ClCompile Include="Vec3i.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.Mesh.cpp">
+    <ClCompile Include="Violet.Mesh.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.Color.cpp">
+    <ClCompile Include="Color.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
@@ -78,19 +78,16 @@
     <ClCompile Include="Mat4.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.Keyboard.cpp">
+    <ClCompile Include="Violet.Keyboard.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.Mouse.cpp">
+    <ClCompile Include="Violet.Mouse.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.Private.cpp">
+    <ClCompile Include="Violet.Window.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.Public.cpp">
-      <Filter>Render3D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.Special.cpp">
+    <ClCompile Include="Math.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -122,34 +119,31 @@
     <ClInclude Include="ImGui\imstb_truetype.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Render3D\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Quaternion.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vec3.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
+    <ClInclude Include="Violet.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Render3D\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
+    <ClInclude Include="Mat4.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Render3D\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Violet.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Math.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vec2.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glEvent.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

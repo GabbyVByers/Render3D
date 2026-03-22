@@ -1,6 +1,5 @@
 
 #include "Quaternion.h"
-#include "Vector.h"
 
 Violet::Quaternion::Quaternion() {
 	w = 1.0;
@@ -14,37 +13,6 @@ Violet::Quaternion::Quaternion(double w, double x, double y, double z) {
 	this->x = x;
 	this->y = y;
 	this->z = z;
-}
-
-void Violet::Quaternion::normalize() {
-	double len = sqrt((w * w) + (x * x) + (y * y) + (z * z));
-	w /= len;
-	x /= len;
-	y /= len;
-	z /= len;
-}
-
-Violet::Quaternion Violet::Quaternion::buildRotationQuaternion(const Vec3d& axis, double theta) {
-	Vec3d axis_n = axis;
-	axis_n.normalize();
-	double half = theta * 0.5;
-	double s = sin(half);
-	return {
-		cos(half),
-		s * axis_n.x,
-		s * axis_n.y,
-		s * axis_n.z
-	};
-}
-
-
-Violet::Quaternion Violet::Quaternion::complexConjugate(const Quaternion& quat) {
-	return {
-		quat.w,
-	   -quat.x,
-	   -quat.y,
-	   -quat.z
-	};
 }
 
 Violet::Quaternion Violet::Quaternion::operator * (const Quaternion& q) const {

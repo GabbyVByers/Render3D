@@ -1,8 +1,5 @@
 
 #include "Camera.h"
-#include "Vector.h"
-#include "Matrix.h"
-#include "Quaternion.h"
 #include <cmath>
 
 Violet::Camera::Camera() {
@@ -13,29 +10,26 @@ Violet::Camera::Camera() {
 
 Violet::Vec3d Violet::Camera::forwardDirection() const {
 	Vec3d forward = Vec3d(0.0, 0.0, -1.0);
-	forward.rotate(orientation);
-	return forward;
+	return Math::applyQuaternionRotation(forward, orientation);
 }
 
 Violet::Vec3d Violet::Camera::upDirection() const {
 	Vec3d up = Vec3d(0.0, 1.0, 0.0);
-	up.rotate(orientation);
-	return up;
+	return Math::applyQuaternionRotation(up, orientation);
 }
 
 Violet::Vec3d Violet::Camera::rightDirection() const {
 	Vec3d right = Vec3d(1.0, 0.0, 0.0);
-	right.rotate(orientation);
-	return right;
+	return Math::applyQuaternionRotation(right, orientation);
 }
 
-Violet::Matrix Violet::Camera::viewMatrix() const {
-	Matrix translation_matrix_inverse = Matrix::buildTranslationMatrix(position);
-	Matrix rotation_matrix_inverse    = Matrix::buildRotationMatrix(Quaternion::complexConjugate(orientation));
+Violet::Mat4 Violet::Camera::viewMatrix() const {
+	Mat4 translation_matrix_inverse = Math::translationMatrix(position);
+	Mat4 rotation_matrix_inverse    = Math::rotationMatrix(Math::complexConjugate(orientation));
 	return rotation_matrix_inverse * translation_matrix_inverse;
 }
 
-Violet::Matrix Violet::Camera::projectionMatrix(const Vec2i& window_size) const {
+Violet::Mat4 Violet::Camera::projectionMatrix(const Vec2i& window_size) const {
 	int width = window_size.x;
 	int height = window_size.y;
 	if (height == 0)
@@ -43,7 +37,7 @@ Violet::Matrix Violet::Camera::projectionMatrix(const Vec2i& window_size) const 
 	double aspect_ratio = (double)width / (double)height;
 	double fov_radians = fov_degrees * Pi64 / 180.0;
 	double f = 1.0 / tan(fov_radians / 2.0);
-	Matrix projectionMatrix = {
+	Mat4 projectionMatrix = {
 		f / aspect_ratio, 0.0, 0.0, 0.0,
 		0.0, f, 0.0, 0.0,
 		0.0, 0.0, (far + near) / (near - far),

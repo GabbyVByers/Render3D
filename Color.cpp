@@ -1,5 +1,6 @@
 
-#include "Mesh.h"
+#include "Color.h"
+#include <cstdlib>
 
 Violet::Color::Color() {
 	r = 1.0f;

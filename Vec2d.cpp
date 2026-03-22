@@ -4,9 +4,9 @@
 Violet::Vec2d::Vec2d() { x = 0.0; y = 0.0; }
 Violet::Vec2d::Vec2d(double x, double y) { this->x = x; this->y = y; }
 
-Violet::Vec2d& Violet::Vec2d::operator = (const Vec2i& vec) { x = (double)vec.x; y = (double)vec.y; }
-Violet::Vec2d& Violet::Vec2d::operator = (const Vec2f& vec) { x = (double)vec.x; y = (double)vec.y; }
-Violet::Vec2d& Violet::Vec2d::operator = (const Vec2d& vec) { x = (double)vec.x; y = (double)vec.y; }
+Violet::Vec2d& Violet::Vec2d::operator = (const Vec2i& vec) { x = (double)vec.x; y = (double)vec.y; return *this; }
+Violet::Vec2d& Violet::Vec2d::operator = (const Vec2f& vec) { x = (double)vec.x; y = (double)vec.y; return *this; }
+Violet::Vec2d& Violet::Vec2d::operator = (const Vec2d& vec) { x = (double)vec.x; y = (double)vec.y; return *this; }
 
 Violet::Vec2d Violet::Vec2d::operator + (const Vec2d& vec)   const { return { x + vec.x, y + vec.y }; }
 Violet::Vec2d Violet::Vec2d::operator - (const Vec2d& vec)   const { return { x - vec.x, y - vec.y }; }
