@@ -159,14 +159,15 @@
     <ClCompile Include="ImGui\imgui_tables.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Math.cpp" />
+    <ClCompile Include="RenderMath.cpp" />
+    <ClCompile Include="VecMath.cpp" />
     <ClCompile Include="Vec2d.cpp" />
     <ClCompile Include="Vec2f.cpp" />
     <ClCompile Include="Vec3d.cpp" />
     <ClCompile Include="Mat4.cpp" />
     <ClCompile Include="Vec3f.cpp" />
     <ClCompile Include="Color.cpp" />
-    <ClCompile Include="Quaternion.cpp" />
+    <ClCompile Include="Quat.cpp" />
     <ClCompile Include="Vec2i.cpp" />
     <ClCompile Include="Vec3i.cpp" />
     <ClCompile Include="OpenGL\glad.c" />
@@ -189,8 +190,11 @@
     <ClInclude Include="ImGui\imstb_rectpack.h" />
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
-    <ClInclude Include="Math.h" />
-    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="Corelib.h" />
+    <ClInclude Include="RenderMath.h" />
+    <ClInclude Include="VecMath.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Quat.h" />
     <ClInclude Include="Mat4.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vec3.h" />
@@ -199,6 +203,9 @@
   <ItemGroup>
     <None Include="default.frag" />
     <None Include="default.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

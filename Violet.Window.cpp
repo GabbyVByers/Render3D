@@ -18,15 +18,15 @@ Violet::Window::Window(std::string title, int width, int height) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glfwSetFramebufferSizeCallback(window_ptr, callBackWindowResize);
-	glfwSetKeyCallback(window_ptr, callBackKeyboard);
-	glfwSetMouseButtonCallback(window_ptr, callBackMouse);
-	glfwSetScrollCallback(window_ptr, callBackMouseScroll);
+	glfwSetFramebufferSizeCallback(window_ptr, callback_window_resize);
+	glfwSetKeyCallback(window_ptr, callback_keyboard);
+	glfwSetMouseButtonCallback(window_ptr, callback_mouse);
+	glfwSetScrollCallback(window_ptr, callback_mousescroll);
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
-	io.FontGlobalScale = 1.0f;
+	io.FontGlobalScale = 1.7f;
 	io.IniFilename = nullptr;
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(window_ptr, true);
@@ -47,17 +47,17 @@ Violet::Vec2i Violet::Window::size() {
 	return { x, y };
 }
 
-void Violet::Window::vSync(bool vsync) {
+void Violet::Window::vsync(bool vsync) {
 	glfwSwapInterval((int)vsync);
 }
 
-bool Violet::Window::isOpen() {
+bool Violet::Window::is_open() {
 	return !glfwWindowShouldClose(window_ptr);
 }
 
-void Violet::Window::pollEvents() {
-	Mouse::getMouse().reset();
-	Keyboard::getKeyboard().reset();
+void Violet::Window::poll_events() {
+	Mouse::get_mouse().reset();
+	Keyboard::get_keyboard().reset();
 	glfwPollEvents();
 }
 
@@ -82,12 +82,12 @@ void Violet::Window::draw(const Mesh& mesh, Camera& camera) {
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glUseProgram(shader);
 
-	Mat4 model_matrix = mesh.modelMatrix();
-	Mat4 view_matrix  = camera.viewMatrix();
-	Mat4 projection_matrix = camera.projectionMatrix(Window::size());
+	Mat4 model_matrix = Math::model_matrix(mesh);
+	Mat4 view_matrix = Math::view_matrix(camera);
+	Mat4 projection_matrix = Math::projection_matrix(camera, Window::size());
 
 	Mat4 model_view_project = projection_matrix * view_matrix * model_matrix;
-	Mat4f mvp_float = Math::floatMatrix(model_view_project);
+	Mat4f mvp_float = Math::float_matrix(model_view_project);
 	glUniformMatrix4fv(glGetUniformLocation(shader, "uModelViewProject"), 1, GL_TRUE, &mvp_float.data[0][0]);
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_DYNAMIC_DRAW);
@@ -100,41 +100,41 @@ void Violet::Window::display() {
 	glfwSwapBuffers(window_ptr);
 }
 
-GLFWwindow* Violet::Window::getGLFWptr() {
+GLFWwindow* Violet::Window::get_glfw_ptr() {
 	return window_ptr;
 }
 
-void Violet::Window::callBackWindowResize(GLFWwindow* window_ptr, int width, int height) {
+void Violet::Window::callback_window_resize(GLFWwindow* window_ptr, int width, int height) {
 	glViewport(0, 0, width, height);
 }
 
-void Violet::Window::callBackKeyboard(GLFWwindow* window_ptr, int key, int scancode, int action, int mods) {
-	glKeyboardEvent key_event = {
+void Violet::Window::callback_keyboard(GLFWwindow* window_ptr, int key, int scancode, int action, int mods) {
+	GlfwKeyboardEvent key_event = {
 		key,
 		scancode,
 		action,
 		mods
 	};
-	Keyboard& keyboard = Keyboard::getKeyboard();
-	keyboard.pushKeyEvent(key_event);
+	Keyboard& keyboard = Keyboard::get_keyboard();
+	keyboard.push_key_event(key_event);
 }
 
-void Violet::Window::callBackMouse(GLFWwindow* window_ptr, int button, int action, int mods) {
-	glMouseEvent mouse_event = {
+void Violet::Window::callback_mouse(GLFWwindow* window_ptr, int button, int action, int mods) {
+	GlfwMouseEvent mouse_event = {
 		button,
 		action,
 		mods
 	};
-	Mouse& mouse = Mouse::getMouse();
-	mouse.pushMouseEvent(mouse_event);
+	Mouse& mouse = Mouse::get_mouse();
+	mouse.push_mouse_event(mouse_event);
 }
 
-void Violet::Window::callBackMouseScroll(GLFWwindow* window_ptr, double xoffset, double yoffset) {
-	glScrollEvent scroll_event{
+void Violet::Window::callback_mousescroll(GLFWwindow* window_ptr, double xoffset, double yoffset) {
+	GlfwScrollEvent scroll_event{
 		xoffset,
 		yoffset
 	};
-	Mouse& mouse = Mouse::getMouse();
-	mouse.pushScrollEvent(scroll_event);
+	Mouse& mouse = Mouse::get_mouse();
+	mouse.push_scroll_event(scroll_event);
 }
 

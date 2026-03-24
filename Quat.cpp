@@ -1,21 +1,21 @@
 
-#include "Quaternion.h"
+#include "Quat.h"
 
-Violet::Quaternion::Quaternion() {
+Violet::Quat::Quat() {
 	w = 1.0;
 	x = 0.0;
 	y = 0.0;
 	z = 0.0;
 }
 
-Violet::Quaternion::Quaternion(double w, double x, double y, double z) {
+Violet::Quat::Quat(double w, double x, double y, double z) {
 	this->w = w;
 	this->x = x;
 	this->y = y;
 	this->z = z;
 }
 
-Violet::Quaternion Violet::Quaternion::operator * (const Quaternion& q) const {
+Violet::Quat Violet::Quat::operator * (const Quat& q) const {
 	return {
 		(w * q.w) - (x * q.x) - (y * q.y) - (z * q.z),
 		(w * q.x) + (x * q.w) + (y * q.z) - (z * q.y),

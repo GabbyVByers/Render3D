@@ -1,22 +1,20 @@
 
 #pragma once
-#include "Math.h"
+#include "VecMath.h"
 
 namespace Violet {
 
 	class Camera {
 	public:
-		double     fov_degrees;
-		double     near, far;
-		Vec3d      position;
-		Quaternion orientation;
-
 		Camera();
-		Vec3d forwardDirection() const;
-		Vec3d upDirection() const;
-		Vec3d rightDirection() const;
-		Mat4 viewMatrix() const;
-		Mat4 projectionMatrix(const Vec2i& window_size) const;
+		double fov_degrees;
+		double near, far;
+		Vec3d  position;
+		Quat   orientation;
+
+		static Vec3d forward_dir(const Camera& camera);
+		static Vec3d up_dir(const Camera& camera);
+		static Vec3d right_dir(const Camera& camera);
 	};
 }
 

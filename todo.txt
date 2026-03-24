@@ -1,0 +1,31 @@
+
+
+Vi::Texture texture (add to mesh)
+vertex needs tex coords
+mesh is most generic thing you can draw and can be used openendedly
+
+inherited meshies implement:
+    generating geometry
+    calculating tex coords
+
+implementing a special draw() to window for each meshie
+
+(inheritance)
+mesh -> sphere
+     -> cube
+     -> arrow
+
+vao, vbo, ebo
+
+MyClass;
+my_func();
+my_var;
+
+Member functions:
+    return nothing and permute internal state or do an observable thing.
+    non-trivial getters/setters.
+
+Namespace functions:
+    do math/computations on data from several different types.
+    type = function(type a, type b, type c) // does not trivially belong to any class
+

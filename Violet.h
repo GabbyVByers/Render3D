@@ -1,50 +1,19 @@
 
 #pragma once
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <string>
 #include <vector>
 #include "glEvent.h"
-#include "Camera.h"
-#include "Color.h"
+#include "RenderMath.h"
 
 namespace Violet {
 
-	class Vertex;
-	class Mesh;
 	class Mouse;
 	class Keyboard;
 	class Window;
 
-	class Vertex {
-	public:
-		Vec3f position;
-		Color color;
-	};
-
-	class Mesh {
-	public:
-		double     scale;
-		Vec3d      position;
-		Quaternion orientation;
-		std::vector<Vertex> vertices;
-
-		Mesh(const std::string& path, GLenum type);
-		~Mesh();
-		Mat4 modelMatrix() const;
-
-	private:
-		friend Window;
-		GLuint vao, vbo, shader;
-		GLenum primative_type;
-	};
-
 	class Mouse {
 	public:
-		static Mouse& getMouse();
+		static Mouse& get_mouse();
 		Vec2d position() const;
 		Vec2d velocity() const;
 		bool pressing(int BUTTON) const;
@@ -54,14 +23,14 @@ namespace Violet {
 	private:
 		friend Window;
 		Vec2d pos, vel;
-		std::vector<glMouseEvent> mouse_events;
-		std::vector<glScrollEvent> scroll_events;
+		std::vector<GlfwMouseEvent> mouse_events;
+		std::vector<GlfwScrollEvent> scroll_events;
 
 		Mouse()  {};
 		~Mouse() {};
 		void reset();
-		void pushMouseEvent(glMouseEvent mouse_event);
-		void pushScrollEvent(glScrollEvent scroll_event);
+		void push_mouse_event(GlfwMouseEvent mouse_event);
+		void push_scroll_event(GlfwScrollEvent scroll_event);
 
 		Mouse(const Mouse& other)              = delete;
 		Mouse(Mouse&& other)                   = delete;
@@ -71,18 +40,18 @@ namespace Violet {
 
 	class Keyboard {
 	public:
-		static Keyboard& getKeyboard();
+		static Keyboard& get_keyboard();
 		bool pressed(int key, int edge);
 		bool pressing(int key);
 
 	private:
 		friend Window;
-		std::vector<glKeyboardEvent> keyboard_events;
+		std::vector<GlfwKeyboardEvent> keyboard_events;
 
 		Keyboard()  {};
 		~Keyboard() {};
 		void reset();
-		void pushKeyEvent(glKeyboardEvent& key_event);
+		void push_key_event(GlfwKeyboardEvent& key_event);
 
 		Keyboard(const Keyboard& other)              = delete;
 		Keyboard(Keyboard&& other)                   = delete;
@@ -95,9 +64,9 @@ namespace Violet {
 		Window(std::string title, int width, int height);
 		~Window();
 		static Vec2i size();
-		void vSync(bool vsync);
-		bool isOpen();
-		void pollEvents();
+		void vsync(bool vsync);
+		bool is_open();
+		void poll_events();
 		void clear(Color color);
 		void draw(const Mesh& mesh, Camera& camera);
 		void display();
@@ -106,11 +75,11 @@ namespace Violet {
 		friend Mouse;
 		friend Keyboard;
 		inline static GLFWwindow* window_ptr = nullptr;
-		static GLFWwindow* getGLFWptr();
-		static void callBackWindowResize(GLFWwindow* window_ptr, int width, int height);
-		static void callBackKeyboard(GLFWwindow* window_ptr, int key, int scancode, int action, int mods);
-		static void callBackMouse(GLFWwindow* window_ptr, int button, int action, int mods);
-		static void callBackMouseScroll(GLFWwindow* window_ptr, double xoffset, double yoffset);
+		static GLFWwindow* get_glfw_ptr();
+		static void callback_window_resize(GLFWwindow* window_ptr, int width, int height);
+		static void callback_keyboard(GLFWwindow* window_ptr, int key, int scancode, int action, int mods);
+		static void callback_mouse(GLFWwindow* window_ptr, int button, int action, int mods);
+		static void callback_mousescroll(GLFWwindow* window_ptr, double xoffset, double yoffset);
 		Window(const Window& other)              = delete;
 		Window(Window&& other)                   = delete;
 		Window& operator = (const Window& other) = delete;

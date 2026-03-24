@@ -3,30 +3,38 @@
 #include <fstream>
 #include <sstream>
 
-static std::string loadFileAsString(std::string file_path) {
-	std::ifstream file(file_path);
-	if (!file.is_open())
-		std::terminate();
-	std::stringstream buffer;
-	buffer << file.rdbuf();
-	return buffer.str();
+Violet::Mesh::Mesh() {
+	this->scale = 1.0;
+	this->position = Vec3d(0.0, 0.0, 0.0);
+	this->orientation = Quat();
+	this->vertices = std::vector<Vertex>();
+	this->vao = NULL;
+	this->vbo = NULL;
+	this->shader = NULL;
+	this->primative_type = NULL;
 }
 
-Violet::Mesh::Mesh(const std::string& path, GLenum type) {
-	scale = 1.0;
-	primative_type = type;
-	glGenVertexArrays(1, &vao);
-	glGenBuffers(1, &vbo);
-	glBindVertexArray(vao);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+void Violet::Mesh::create(const std::string& path, GLenum type) {
+	glGenVertexArrays(1, &this->vao);
+	glGenBuffers(1, &this->vbo);
+	glBindVertexArray(this->vao);
+	glBindBuffer(GL_ARRAY_BUFFER, this->vbo);
+	this->primative_type = type;
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
-	std::string vert_source = loadFileAsString(path + ".vert");
-	std::string frag_source = loadFileAsString(path + ".frag");
+	auto load = [](std::string path) -> std::string {
+		std::ifstream file(path);
+		std::stringstream buffer;
+		buffer << file.rdbuf();
+		return buffer.str();
+	};
+
+	std::string vert_source = load(path + ".vert");
+	std::string frag_source = load(path + ".frag");
 	const char* vert_c_str = vert_source.c_str();
 	const char* frag_c_str = frag_source.c_str();
 
@@ -45,27 +53,23 @@ Violet::Mesh::Mesh(const std::string& path, GLenum type) {
 	if (!success)
 		std::terminate();
 
-	shader = glCreateProgram();
-	glAttachShader(shader, vert_program);
-	glAttachShader(shader, frag_program);
-	glLinkProgram(shader);
+	this->shader = glCreateProgram();
+	glAttachShader(this->shader, vert_program);
+	glAttachShader(this->shader, frag_program);
+	glLinkProgram(this->shader);
 	glDeleteShader(vert_program);
 	glDeleteShader(frag_program);
-	glGetProgramiv(shader, GL_LINK_STATUS, &success);
+	glGetProgramiv(this->shader, GL_LINK_STATUS, &success);
 	if (!success)
 		std::terminate();
 }
 
-Violet::Mesh::~Mesh() {
-	glDeleteProgram(shader);
-	glDeleteBuffers(1, &vbo);
-	glDeleteVertexArrays(1, &vao);
-}
-
-Violet::Mat4 Violet::Mesh::modelMatrix() const {
-	Mat4 scalar_matrix      = Math::scalarMatrix(scale);
-	Mat4 translation_matrix = Math::translationMatrix(position);
-	Mat4 rotation_matrix    = Math::rotationMatrix(orientation);
-	return translation_matrix * scalar_matrix * rotation_matrix;
+void Violet::Mesh::destroy() {
+	glDeleteProgram(this->shader);
+	glDeleteBuffers(1, &this->vbo);
+	glDeleteVertexArrays(1, &this->vao);
+	this->shader = NULL;
+	this->vbo = NULL;
+	this->vao = NULL;
 }
 

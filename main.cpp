@@ -11,13 +11,14 @@ int main() {
 	Vi::Window window = Vi::Window("Render3D", 1920, 1080);
 	Vi::Camera camera;
 
-	Vi::Mesh mesh("default", GL_TRIANGLES);
+	Vi::Mesh mesh;
+	mesh.create("default", GL_TRIANGLES);
 	mesh.vertices.push_back({ Vi::Vec3f(-0.5, 0.5, 0.0), Vi::Color::random() });
 	mesh.vertices.push_back({ Vi::Vec3f(-0.5,-0.5, 0.0), Vi::Color::random() });
 	mesh.vertices.push_back({ Vi::Vec3f( 0.5, 0.0, 0.0), Vi::Color::random() });
 
-	while (window.isOpen()) {
-		window.pollEvents();
+	while (window.is_open()) {
+		window.poll_events();
 		window.clear(Violet::Color(0.2, 0.2, 0.4));
 
 		inputTest();
@@ -32,8 +33,8 @@ int main() {
 }
 
 static void inputTest() {
-	Vi::Mouse& mouse = Vi::Mouse::getMouse();
-	Vi::Keyboard& keyboard = Vi::Keyboard::getKeyboard();
+	Vi::Mouse& mouse = Vi::Mouse::get_mouse();
+	Vi::Keyboard& keyboard = Vi::Keyboard::get_keyboard();
 
 	if (mouse.clicked(GLFW_MOUSE_BUTTON_LEFT, GLFW_PRESS))
 		std::cout << "Left Mouse Button Pressed\n";
@@ -75,7 +76,7 @@ static void inputTest() {
 static void debugGui(Vi::Window& window, Vi::Camera& camera) {
 	Vi::Vec2i screen_size = window.size();
 	ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always);
-	ImGui::SetNextWindowSize(ImVec2(500, screen_size.y), ImGuiCond_Always);
+	ImGui::SetNextWindowSize(ImVec2(200, screen_size.y), ImGuiCond_Always);
 	ImGui::Begin(
 		"stats for nerds",
 		nullptr,
@@ -92,17 +93,17 @@ static void debugGui(Vi::Window& window, Vi::Camera& camera) {
 
 static void controlCamera(Vi::Camera& camera) {
 	constexpr double speed = 0.001;
-	Vi::Mouse& mouse = Vi::Mouse::getMouse();
+	Vi::Mouse& mouse = Vi::Mouse::get_mouse();
 
 	if (mouse.pressing(GLFW_MOUSE_BUTTON_LEFT)) {
 		Vi::Vec3d up = Vi::Vec3d(0.0, 1.0, 0.0);
-		Vi::Quaternion rot_up = Vi::Math::rotationQuaternion(up, (double)mouse.velocity().x * -speed);
+		Vi::Quat rot_up = Vi::Math::rotation_quat_vec3d(up, (double)mouse.velocity().x * -speed);
 		camera.orientation = rot_up * camera.orientation;
-		Vi::Vec3d right = camera.rightDirection();
-		Vi::Quaternion rot_right = Vi::Math::rotationQuaternion(right, (double)mouse.velocity().y * -speed);
+		Vi::Vec3d right = Vi::Camera::right_dir(camera);
+		Vi::Quat rot_right = Vi::Math::rotation_quat_vec3d(right, (double)mouse.velocity().y * -speed);
 		camera.orientation = rot_right * camera.orientation;
 	}
 
-	camera.position = camera.forwardDirection() * 2.0;
+	camera.position = Vi::Camera::forward_dir(camera) * 2.0;
 }
 

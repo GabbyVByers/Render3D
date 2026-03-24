@@ -3,24 +3,24 @@
 
 namespace Violet {
 
-	class glMouseEvent;
-	class glScrollEvent;
-	class glKeyboardEvent;
+	class GlfwMouseEvent;
+	class GlfwScrollEvent;
+	class GlfwKeyboardEvent;
 
-	class glMouseEvent {
+	class GlfwMouseEvent {
 	public:
 		int button;
 		int action;
 		int mods;
 	};
 
-	class glScrollEvent {
+	class GlfwScrollEvent {
 	public:
 		double xoffset;
 		double yoffset;
 	};
 
-	class glKeyboardEvent {
+	class GlfwKeyboardEvent {
 	public:
 		int key;
 		int scancode;
