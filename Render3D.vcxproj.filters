@@ -63,7 +63,7 @@
     <ClCompile Include="Vec3i.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Mesh.cpp">
+    <ClCompile Include="Mesh.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Color.cpp">
@@ -78,13 +78,13 @@
     <ClCompile Include="Mat4.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Keyboard.cpp">
+    <ClCompile Include="Keyboard.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Mouse.cpp">
+    <ClCompile Include="Mouse.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Violet.Window.cpp">
+    <ClCompile Include="Window.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="QuatMath.cpp">
@@ -128,7 +128,7 @@
     <ClInclude Include="Vec3.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Violet.h">
+    <ClInclude Include="Window.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mat4.h">
@@ -156,6 +156,15 @@
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderMath.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Violet3D.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

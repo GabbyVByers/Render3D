@@ -1,21 +1,14 @@
 
-#include "Violet.h"
+#include "Mouse.h"
 
-Violet::Mouse& Violet::Mouse::get_mouse() {
-	static Mouse mouse;
-	return mouse;
-}
+Violet::Mouse::Mouse(GLFWwindow* window_ptr) { this->window_ptr = window_ptr; }
+Violet::Mouse::~Mouse() {}
 
-Violet::Vec2d Violet::Mouse::position() const {
-	return pos;
-}
-
-Violet::Vec2d Violet::Mouse::velocity() const {
-	return vel;
-}
+Violet::Vec2d Violet::Mouse::position() const { return pos; }
+Violet::Vec2d Violet::Mouse::velocity() const { return vel; }
 
 bool Violet::Mouse::pressing(int BUTTON) const {
-	return glfwGetMouseButton(Window::get_glfw_ptr(), BUTTON) == GLFW_PRESS;
+	return glfwGetMouseButton(window_ptr, BUTTON) == GLFW_PRESS;
 }
 
 bool Violet::Mouse::clicked(int BUTTON, int ACTION) const {
@@ -38,7 +31,6 @@ double Violet::Mouse::scroll() const {
 }
 
 void Violet::Mouse::reset() {
-	GLFWwindow* window_ptr = Window::get_glfw_ptr();
 	double x, y; glfwGetCursorPos(window_ptr, &x, &y);
 	Vec2d new_pos = { x, y };
 	vel = new_pos - pos;

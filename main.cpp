@@ -1,8 +1,7 @@
 
-#include "Violet.h"
+#include "Violet3D.h"
 #include <iostream>
 
-#define Vi Violet
 static void inputTest();
 static void debugGui(Vi::Window& window, Vi::Camera& camera);
 static void controlCamera(Vi::Camera& camera);
@@ -33,8 +32,8 @@ int main() {
 }
 
 static void inputTest() {
-	Vi::Mouse& mouse = Vi::Mouse::get_mouse();
-	Vi::Keyboard& keyboard = Vi::Keyboard::get_keyboard();
+	Vi::Mouse& mouse = Vi::Window::mouse();
+	Vi::Keyboard& keyboard = Vi::Window::keyboard();
 
 	if (mouse.clicked(GLFW_MOUSE_BUTTON_LEFT, GLFW_PRESS))
 		std::cout << "Left Mouse Button Pressed\n";
@@ -93,7 +92,7 @@ static void debugGui(Vi::Window& window, Vi::Camera& camera) {
 
 static void controlCamera(Vi::Camera& camera) {
 	constexpr double speed = 0.001;
-	Vi::Mouse& mouse = Vi::Mouse::get_mouse();
+	Vi::Mouse& mouse = Vi::Window::mouse();
 
 	if (mouse.pressing(GLFW_MOUSE_BUTTON_LEFT)) {
 		Vi::Vec3d up = Vi::Vec3d(0.0, 1.0, 0.0);

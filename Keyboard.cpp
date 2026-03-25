@@ -1,10 +1,8 @@
 
-#include "Violet.h"
+#include "Keyboard.h"
 
-Violet::Keyboard& Violet::Keyboard::get_keyboard() {
-	static Keyboard keyboard;
-	return keyboard;
-}
+Violet::Keyboard::Keyboard(GLFWwindow* window_ptr) { this->window_ptr = window_ptr; }
+Violet::Keyboard::~Keyboard() {}
 
 bool Violet::Keyboard::pressed(int key, int edge) {
 	for (GlfwKeyboardEvent key_event : keyboard_events) {
@@ -18,7 +16,7 @@ bool Violet::Keyboard::pressed(int key, int edge) {
 }
 
 bool Violet::Keyboard::pressing(int key) {
-	return glfwGetKey(Window::get_glfw_ptr(), key) == GLFW_PRESS;
+	return glfwGetKey(window_ptr, key) == GLFW_PRESS;
 }
 
 void Violet::Keyboard::reset() {

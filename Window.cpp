@@ -1,5 +1,5 @@
 
-#include "Violet.h"
+#include "Window.h"
 
 Violet::Window::Window(std::string title, int width, int height) {
 	glfwInit();
@@ -56,8 +56,8 @@ bool Violet::Window::is_open() {
 }
 
 void Violet::Window::poll_events() {
-	Mouse::get_mouse().reset();
-	Keyboard::get_keyboard().reset();
+	Window::mouse().reset();
+	Window::keyboard().reset();
 	glfwPollEvents();
 }
 
@@ -100,6 +100,16 @@ void Violet::Window::display() {
 	glfwSwapBuffers(window_ptr);
 }
 
+Violet::Mouse& Violet::Window::mouse() {
+	static Mouse mouse(window_ptr);
+	return mouse;
+}
+
+Violet::Keyboard& Violet::Window::keyboard() {
+	static Keyboard keyboard(window_ptr);
+	return keyboard;
+}
+
 GLFWwindow* Violet::Window::get_glfw_ptr() {
 	return window_ptr;
 }
@@ -115,7 +125,7 @@ void Violet::Window::callback_keyboard(GLFWwindow* window_ptr, int key, int scan
 		action,
 		mods
 	};
-	Keyboard& keyboard = Keyboard::get_keyboard();
+	Keyboard& keyboard = Window::keyboard();
 	keyboard.push_key_event(key_event);
 }
 
@@ -125,7 +135,7 @@ void Violet::Window::callback_mouse(GLFWwindow* window_ptr, int button, int acti
 		action,
 		mods
 	};
-	Mouse& mouse = Mouse::get_mouse();
+	Mouse& mouse = Window::mouse();
 	mouse.push_mouse_event(mouse_event);
 }
 
@@ -134,7 +144,7 @@ void Violet::Window::callback_mousescroll(GLFWwindow* window_ptr, double xoffset
 		xoffset,
 		yoffset
 	};
-	Mouse& mouse = Mouse::get_mouse();
+	Mouse& mouse = Window::mouse();
 	mouse.push_scroll_event(scroll_event);
 }
 
