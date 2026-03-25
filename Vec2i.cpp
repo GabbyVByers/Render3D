@@ -10,6 +10,11 @@ int Violet::Vec2i::hypot(const Vec2i& vec) { return std::hypot(vec.x, vec.y); }
 int Violet::Vec2i::dot(const Vec2i& a, const Vec2i& b) { return (a.x * b.x) + (a.y * b.y); }
 int Violet::Vec2i::cross(const Vec2i& a, const Vec2i& b) { return (a.x * b.y) - (a.y * b.x); }
 Violet::Vec2i Violet::Vec2i::normalize(const Vec2i& vec) {
+	int sum =
+		std::abs(vec.x) +
+		std::abs(vec.y);
+	if (sum == 1)
+		return vec;
 	static const std::vector<Vec2f> basisies{
 		Vec2f( 1.0f, 0.0f),
 		Vec2f(-1.0f, 0.0f),

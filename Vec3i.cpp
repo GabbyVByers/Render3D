@@ -16,6 +16,12 @@ Violet::Vec3i Violet::Vec3i::cross(const Vec3i& a, const Vec3i& b) {
 	};
 }
 Violet::Vec3i Violet::Vec3i::normalize(const Vec3i& vec) {
+	int sum =
+		std::abs(vec.x) +
+		std::abs(vec.y) +
+		std::abs(vec.z);
+	if (sum == 1)
+		return vec;
 	static const std::vector<Vec3f> basisies{
 		Vec3f( 1.0f, 0.0f, 0.0f),
 		Vec3f(-1.0f, 0.0f, 0.0f),

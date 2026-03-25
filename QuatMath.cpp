@@ -3,21 +3,9 @@
 #include <cmath>
 
 Violet::Vec3f Violet::Math::rotate_around_axis(const Vec3f& vec, const Vec3i& axis, float  theta) {
-	auto is_basis = [](const Vec3i& vec) -> bool {
-		if (abs(vec.x) == 1)
-			return (vec.y == 0) && (vec.z == 0);
-		if (abs(vec.y) == 1)
-			return (vec.x == 0) && (vec.z == 0);
-		if (abs(vec.z) == 1)
-			return (vec.x == 0) && (vec.y == 0);
-		return false;
-	};
-	if (is_basis(axis)) {
-		Quat rotation = rotation_quat(axis, theta);
-		return apply_quat_rotation(vec, rotation);
-	}
-	else
-		return Vec3f();
+	Vec3i axis_n = Vec3i::normalize(axis);
+	Quat rotation = rotation_quat(axis, theta);
+	return apply_quat_rotation(vec, rotation);
 }
 
 Violet::Vec3f Violet::Math::rotate_around_axis(const Vec3f& vec, const Vec3f& axis, float  theta) {
@@ -26,21 +14,9 @@ Violet::Vec3f Violet::Math::rotate_around_axis(const Vec3f& vec, const Vec3f& ax
 }
 
 Violet::Vec3d Violet::Math::rotate_around_axis(const Vec3d& vec, const Vec3i& axis, double theta) {
-	auto is_basis = [](const Vec3i& vec) -> bool {
-		if (abs(vec.x) == 1)
-			return (vec.y == 0) && (vec.z == 0);
-		if (abs(vec.y) == 1)
-			return (vec.x == 0) && (vec.z == 0);
-		if (abs(vec.z) == 1)
-			return (vec.x == 0) && (vec.y == 0);
-		return false;
-	};
-	if (is_basis(axis)) {
-		Quat rotation = rotation_quat(axis, theta);
-		return apply_quat_rotation(vec, rotation);
-	}
-	else
-		return Vec3d();
+	Vec3i axis_n = Vec3i::normalize(axis);
+	Quat rotation = rotation_quat(axis, theta);
+	return apply_quat_rotation(vec, rotation);
 }
 
 Violet::Vec3d Violet::Math::rotate_around_axis(const Vec3d& vec, const Vec3d& axis, double theta) {
