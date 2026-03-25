@@ -4,7 +4,7 @@
 #include <string>
 #include "Corelib.h"
 #include "Color.h"
-#include "VecMath.h"
+#include "QuatMath.h"
 
 namespace Violet {
 

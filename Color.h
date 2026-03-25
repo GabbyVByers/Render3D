@@ -18,6 +18,14 @@ namespace Violet {
 		static Color cyan();
 		static Color purple();
 		static Color yellow();
+
+		Color operator *  (const float scale) const;
+		Color operator /  (const float scale) const;
+		void  operator *= (const float scale);
+		void  operator /= (const float scale);
+
+	private:
+		static float clamp(float value);
 	};
 }
 

@@ -10,7 +10,7 @@ Violet::Mat4 Violet::Math::model_matrix(const Mesh& mesh) {
 
 Violet::Mat4 Violet::Math::view_matrix(const Camera& camera) {
 	Mat4 translation_matrix_inverse = Math::translation_matrix(camera.position);
-	Mat4 rotation_matrix_inverse = Math::rotation_matrix(Math::complex_conjugate(camera.orientation));
+	Mat4 rotation_matrix_inverse = Math::rotation_matrix(Quat::complex_conjugate(camera.orientation));
 	return rotation_matrix_inverse * translation_matrix_inverse;
 }
 
@@ -54,7 +54,7 @@ Violet::Mat4 Violet::Math::translation_matrix(const Violet::Vec3d& position) {
 }
 
 Violet::Mat4 Violet::Math::rotation_matrix(const Violet::Quat& rotation) {
-	Quat rot_n = normalize(rotation);
+	Quat rot_n = Quat::normalize(rotation);
 	double xw = rot_n.x * rot_n.w;
 	double xx = rot_n.x * rot_n.x;
 	double xy = rot_n.x * rot_n.y;

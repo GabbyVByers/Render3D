@@ -1,5 +1,6 @@
 
 #include "Color.h"
+#include <algorithm>
 #include <cstdlib>
 
 Violet::Color::Color() {
@@ -33,4 +34,13 @@ Violet::Color Violet::Color::blue()   { return { 0.0f, 0.0f, 1.0f, 1.0f }; }
 Violet::Color Violet::Color::cyan()   { return { 0.0f, 1.0f, 1.0f, 1.0f }; }
 Violet::Color Violet::Color::purple() { return { 1.0f, 0.0f, 1.0f, 1.0f }; }
 Violet::Color Violet::Color::yellow() { return { 1.0f, 1.0f, 0.0f, 1.0f }; }
+
+float Violet::Color::clamp(float value) {
+	return std::max(0.0f, std::min(value, 1.0f));
+}
+
+Violet::Color Violet::Color::operator * (const float scale) const { return { clamp(r * scale), clamp(g * scale), clamp(b * scale) }; }
+Violet::Color Violet::Color::operator / (const float scale) const { return { clamp(r / scale), clamp(g / scale), clamp(b / scale) }; }
+void Violet::Color::operator *= (const float scale) { clamp(r *= scale); clamp(g *= scale); clamp(b *= scale); }
+void Violet::Color::operator /= (const float scale) { clamp(r /= scale); clamp(g /= scale); clamp(b /= scale); }
 

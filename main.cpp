@@ -13,13 +13,13 @@ int main() {
 
 	Vi::Mesh mesh;
 	mesh.create("default", GL_TRIANGLES);
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5, 0.5, 0.0), Vi::Color::random() });
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5,-0.5, 0.0), Vi::Color::random() });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5, 0.0, 0.0), Vi::Color::random() });
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::random() });
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::random() });
+	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.0f, 0.0f), Vi::Color::random() });
 
 	while (window.is_open()) {
 		window.poll_events();
-		window.clear(Violet::Color(0.2, 0.2, 0.4));
+		window.clear(Violet::Color::blue() * 0.25);
 
 		inputTest();
 		controlCamera(camera);
@@ -97,10 +97,10 @@ static void controlCamera(Vi::Camera& camera) {
 
 	if (mouse.pressing(GLFW_MOUSE_BUTTON_LEFT)) {
 		Vi::Vec3d up = Vi::Vec3d(0.0, 1.0, 0.0);
-		Vi::Quat rot_up = Vi::Math::rotation_quat_vec3d(up, (double)mouse.velocity().x * -speed);
+		Vi::Quat rot_up = Vi::Math::rotation_quat(up, (double)mouse.velocity().x * -speed);
 		camera.orientation = rot_up * camera.orientation;
 		Vi::Vec3d right = Vi::Camera::right_dir(camera);
-		Vi::Quat rot_right = Vi::Math::rotation_quat_vec3d(right, (double)mouse.velocity().y * -speed);
+		Vi::Quat rot_right = Vi::Math::rotation_quat(right, (double)mouse.velocity().y * -speed);
 		camera.orientation = rot_right * camera.orientation;
 	}
 

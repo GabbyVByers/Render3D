@@ -13,6 +13,11 @@ namespace Violet {
 		Vec2i();
 		Vec2i(int x, int y);
 
+		static int hypot(const Vec2i& vec);
+		static int dot(const Vec2i& a, const Vec2i& b);
+		static int cross(const Vec2i& a, const Vec2i& b);
+		static Vec2i normalize(const Vec2i& vec);
+
 		Vec2i& operator = (const Vec2i& vec);
 		Vec2i& operator = (const Vec2f& vec);
 		Vec2i& operator = (const Vec2d& vec);
@@ -34,6 +39,11 @@ namespace Violet {
 		Vec2f();
 		Vec2f(float x, float y);
 
+		static float hypot(const Vec2f& vec);
+		static float dot(const Vec2f& a, const Vec2f& b);
+		static float cross(const Vec2f& a, const Vec2f& b);
+		static Vec2f normalize(const Vec2f& vec);
+
 		Vec2f& operator = (const Vec2i& vec);
 		Vec2f& operator = (const Vec2f& vec);
 		Vec2f& operator = (const Vec2d& vec);
@@ -54,6 +64,11 @@ namespace Violet {
 		double x, y;
 		Vec2d();
 		Vec2d(double x, double y);
+
+		static double hypot(const Vec2d& vec);
+		static double dot(const Vec2d& a, const Vec2d& b);
+		static double cross(const Vec2d& a, const Vec2d& b);
+		static Vec2d normalize(const Vec2d& vec);
 
 		Vec2d& operator = (const Vec2i& vec);
 		Vec2d& operator = (const Vec2f& vec);

@@ -1,5 +1,6 @@
 
 #include "Quat.h"
+#include <cmath>
 
 Violet::Quat::Quat() {
 	w = 1.0;
@@ -13,6 +14,25 @@ Violet::Quat::Quat(double w, double x, double y, double z) {
 	this->x = x;
 	this->y = y;
 	this->z = z;
+}
+
+Violet::Quat Violet::Quat::normalize(const Quat& quat) {
+	double length = std::hypot(quat.w, std::hypot(quat.x, quat.y, quat.z));
+	return {
+		quat.w / length,
+		quat.x / length,
+		quat.y / length,
+		quat.z / length
+	};
+}
+
+Violet::Quat Violet::Quat::complex_conjugate(const Quat& quat) {
+	return {
+		quat.w,
+		-quat.x,
+		-quat.y,
+		-quat.z
+	};
 }
 
 Violet::Quat Violet::Quat::operator * (const Quat& q) const {
