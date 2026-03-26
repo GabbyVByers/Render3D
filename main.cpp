@@ -7,14 +7,14 @@ static void debugGui(Vi::Window& window, Vi::Camera& camera);
 static void controlCamera(Vi::Camera& camera);
 
 int main() {
-	Vi::Window window = Vi::Window("Render3D", 1920, 1080);
+	Vi::Window window("Render3D Demo", 1920, 1080);
 	Vi::Camera camera;
 
 	Vi::Mesh mesh;
 	mesh.create("default", GL_TRIANGLES);
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::random() });
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::random() });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.0f, 0.0f), Vi::Color::random() });
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::purple() });
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::cyan() });
+	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.0f, 0.0f), Vi::Color::yellow() });
 
 	while (window.is_open()) {
 		window.poll_events();
@@ -105,4 +105,3 @@ static void controlCamera(Vi::Camera& camera) {
 
 	camera.position = Vi::Camera::forward_dir(camera) * 2.0;
 }
-

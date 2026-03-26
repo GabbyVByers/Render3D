@@ -198,6 +198,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Quat.h" />
     <ClInclude Include="Mat4.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vec3.h" />
     <ClInclude Include="Violet3D.h" />

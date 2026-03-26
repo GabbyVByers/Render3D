@@ -29,6 +29,8 @@ namespace Violet {
 		GLenum primative_type;
 
 		Mesh();
+		// Move create/destroy to Mesh()/~Mesh()
+		// delete the other 4 special member functions
 		void create(const std::string& path, GLenum type);
 		void destroy();
 	};

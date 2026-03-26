@@ -167,6 +167,9 @@
     <ClInclude Include="Violet3D.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Render3D\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.vert">
