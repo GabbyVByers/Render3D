@@ -93,6 +93,9 @@
     <ClCompile Include="RenderMath.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes.cpp">
+      <Filter>Render3D\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImGui\imconfig.h">
@@ -167,7 +170,7 @@
     <ClInclude Include="Violet3D.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.h">
+    <ClInclude Include="Shapes.h">
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

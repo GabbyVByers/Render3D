@@ -3,23 +3,15 @@
 #include <fstream>
 #include <sstream>
 
-Violet::Mesh::Mesh() {
-	this->scale = 1.0;
-	this->position = Vec3d(0.0, 0.0, 0.0);
-	this->orientation = Quat();
-	this->vertices = std::vector<Vertex>();
-	this->vao = NULL;
-	this->vbo = NULL;
-	this->shader = NULL;
-	this->primative_type = NULL;
-}
+Violet::Mesh::Mesh(const std::string& path, GLenum type) {
+	primative_type = type;
 
-void Violet::Mesh::create(const std::string& path, GLenum type) {
-	glGenVertexArrays(1, &this->vao);
-	glGenBuffers(1, &this->vbo);
-	glBindVertexArray(this->vao);
-	glBindBuffer(GL_ARRAY_BUFFER, this->vbo);
-	this->primative_type = type;
+	glGenVertexArrays(1, &vao);
+	glGenBuffers(1, &vbo);
+	glGenBuffers(1, &ebo);
+	glBindVertexArray(vao);//?
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);//?
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);//?
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 	glEnableVertexAttribArray(0);
@@ -53,23 +45,21 @@ void Violet::Mesh::create(const std::string& path, GLenum type) {
 	if (!success)
 		std::terminate();
 
-	this->shader = glCreateProgram();
-	glAttachShader(this->shader, vert_program);
-	glAttachShader(this->shader, frag_program);
-	glLinkProgram(this->shader);
+	shader = glCreateProgram();
+	glAttachShader(shader, vert_program);
+	glAttachShader(shader, frag_program);
+	glLinkProgram(shader);
 	glDeleteShader(vert_program);
 	glDeleteShader(frag_program);
-	glGetProgramiv(this->shader, GL_LINK_STATUS, &success);
+	glGetShaderiv(shader, GL_LINK_STATUS, &success);
 	if (!success)
 		std::terminate();
 }
 
-void Violet::Mesh::destroy() {
-	glDeleteProgram(this->shader);
-	glDeleteBuffers(1, &this->vbo);
-	glDeleteVertexArrays(1, &this->vao);
-	this->shader = NULL;
-	this->vbo = NULL;
-	this->vao = NULL;
+Violet::Mesh::~Mesh() {
+	glDeleteProgram(shader);
+	glDeleteBuffers(1, &vbo);
+	glDeleteBuffers(1, &ebo);
+	glDeleteVertexArrays(1, &vao);
 }
 

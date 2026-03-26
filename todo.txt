@@ -1,5 +1,8 @@
 
 
+Upgrade to OpenGL 4.6
+Add CUDA
+
 Vi::Texture texture (add to mesh)
 vertex needs tex coords
 mesh is most generic thing you can draw and can be used openendedly

@@ -10,12 +10,22 @@ int main() {
 	Vi::Window window("Render3D Demo", 1920, 1080);
 	Vi::Camera camera;
 
-	Vi::Mesh mesh;
-	mesh.create("default", GL_TRIANGLES);
+	Vi::Mesh mesh("default", GL_TRIANGLES);
+	
 	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::purple() });
 	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::cyan() });
 	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.0f, 0.0f), Vi::Color::yellow() });
+	mesh.vertices.push_back({ Vi::Vec3f( 0.5f,-0.5f, 0.0f), Vi::Color::red() });
 
+	mesh.indices.push_back(0);
+	mesh.indices.push_back(1);
+	mesh.indices.push_back(2);
+	mesh.indices.push_back(1);
+	mesh.indices.push_back(2);
+	mesh.indices.push_back(3);
+	
+	Vi::Mesh sphere_mesh = Vi::Shapes::sphere(10);
+	
 	while (window.is_open()) {
 		window.poll_events();
 		window.clear(Violet::Color::blue() * 0.25);
