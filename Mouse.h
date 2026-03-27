@@ -30,9 +30,9 @@ namespace Violet {
 		void push_scroll_event(GlfwScrollEvent scroll_event);
 
 		Mouse(const Mouse& other) = delete;
-		Mouse(Mouse&& other) = delete;
+		Mouse(Mouse&& other) noexcept = delete;
 		Mouse& operator = (const Mouse& other) = delete;
-		Mouse& operator = (Mouse&& other) = delete;
+		Mouse& operator = (Mouse&& other) noexcept = delete;
 	};
 }
 

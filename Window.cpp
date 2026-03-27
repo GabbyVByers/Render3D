@@ -70,14 +70,18 @@ void Violet::Window::clear(Violet::Color color) {
 }
 
 void Violet::Window::draw(const Mesh& mesh, Camera& camera) {
-	const GLuint vao = mesh.vao;
-	const GLuint vbo = mesh.vbo;
-	const GLuint ebo = mesh.ebo;
-	const GLuint shader = mesh.shader;
+	const GLuint vao = mesh.material.vao;
+	const GLuint vbo = mesh.material.vbo;
+	const GLuint ebo = mesh.material.ebo;
+	const GLuint shader = mesh.material.shader;
+	const GLuint primitive = mesh.material.primitive;
 	const std::vector<Vertex>& vertices = mesh.vertices;
 	const std::vector<unsigned int>& indices = mesh.indices;
 
 	if (vertices.size() == 0)
+		return;
+
+	if (indices.size() == 0)
 		return;
 
 	glBindVertexArray(vao);
@@ -94,8 +98,7 @@ void Violet::Window::draw(const Mesh& mesh, Camera& camera) {
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_DYNAMIC_DRAW);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), &indices[0], GL_DYNAMIC_DRAW);
-	//glDrawArrays(mesh.primative_type, 0, (GLsizei)vertices.size());
-	glDrawElements(mesh.primative_type, (GLsizei)indices.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(primitive, (GLsizei)indices.size(), GL_UNSIGNED_INT, 0);
 }
 
 void Violet::Window::display() {
@@ -112,10 +115,6 @@ Violet::Mouse& Violet::Window::mouse() {
 Violet::Keyboard& Violet::Window::keyboard() {
 	static Keyboard keyboard(window_ptr);
 	return keyboard;
-}
-
-GLFWwindow* Violet::Window::get_glfw_ptr() {
-	return window_ptr;
 }
 
 void Violet::Window::callback_window_resize(GLFWwindow* window_ptr, int width, int height) {

@@ -6,14 +6,14 @@ Violet::Mesh Violet::Shapes::sphere(unsigned int divisions) {
 	// change mesh scale to change size
 	// this method is maximally precision preserving
 
-	Mesh sphere_mesh("default", GL_TRIANGLES);
+	Mesh sphere_mesh;
+	sphere_mesh.material = Material("default", GL_TRIANGLES);
 
+	for (size_t i = 0; i < (size_t)divisions + 1; i++) {
+		for (size_t j = 0; j < (size_t)divisions + 1; j++) {
 
-	for (size_t i = 0; i < divisions; i++) {
-
+		}
 	}
-
-
 
 	return sphere_mesh;
 }

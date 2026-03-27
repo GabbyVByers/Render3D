@@ -2,9 +2,9 @@
 #include "RenderMath.h"
 
 Violet::Mat4 Violet::Math::model_matrix(const Mesh& mesh) {
-	Mat4 scalar_matrix = Math::scalar_matrix(mesh.scale);
-	Mat4 translation_matrix = Math::translation_matrix(mesh.position);
-	Mat4 rotation_matrix = Math::rotation_matrix(mesh.orientation);
+	Mat4 scalar_matrix = Math::scalar_matrix(mesh.transform.scale);
+	Mat4 translation_matrix = Math::translation_matrix(mesh.transform.position);
+	Mat4 rotation_matrix = Math::rotation_matrix(mesh.transform.orientation);
 	return translation_matrix * scalar_matrix * rotation_matrix;
 }
 

@@ -23,11 +23,7 @@ namespace Violet {
 		static Keyboard& keyboard();
 
 	private:
-		friend Mouse;
-		friend Keyboard;
 		inline static GLFWwindow* window_ptr = nullptr;
-
-		static GLFWwindow* get_glfw_ptr();
 		static void callback_window_resize(GLFWwindow* window_ptr, int width, int height);
 		static void callback_keyboard(GLFWwindow* window_ptr, int key, int scancode, int action, int mods);
 		static void callback_mouse(GLFWwindow* window_ptr, int button, int action, int mods);

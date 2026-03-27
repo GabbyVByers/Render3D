@@ -63,7 +63,7 @@
     <ClCompile Include="Vec3i.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
+    <ClCompile Include="Material.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Color.cpp">
@@ -181,6 +181,7 @@
     <None Include="default.frag">
       <Filter>Render3D\Shaders</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="todo.txt" />

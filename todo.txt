@@ -3,6 +3,11 @@
 Upgrade to OpenGL 4.6
 Add CUDA
 
+Really need to address:
+    1. Mesh owns OpenGL handles and deletes them in ~Mesh(),
+    but copy/move behavior is not disabled or implemented.
+    2. const-correctness could be tightened in a few places.
+
 Vi::Texture texture (add to mesh)
 vertex needs tex coords
 mesh is most generic thing you can draw and can be used openendedly
@@ -31,4 +36,5 @@ Member functions:
 Namespace functions:
     do math/computations on data from several different types.
     type = function(type a, type b, type c) // does not trivially belong to any class
+
 
