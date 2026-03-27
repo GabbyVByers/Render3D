@@ -75,6 +75,7 @@ void Violet::Window::draw(const Mesh& mesh, Camera& camera) {
 	const GLuint ebo = mesh.material.ebo;
 	const GLuint shader = mesh.material.shader;
 	const GLuint primitive = mesh.material.primitive;
+	const GLuint texture = mesh.texture.texture;
 	const std::vector<Vertex>& vertices = mesh.vertices;
 	const std::vector<unsigned int>& indices = mesh.indices;
 
@@ -84,6 +85,8 @@ void Violet::Window::draw(const Mesh& mesh, Camera& camera) {
 	if (indices.size() == 0)
 		return;
 
+	if (texture != NULL)
+		glBindTexture(GL_TEXTURE_2D, texture);
 	glBindVertexArray(vao);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);

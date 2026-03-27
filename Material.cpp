@@ -16,6 +16,8 @@ Violet::Material::Material(const std::string& path, GLenum type) {
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(7 * sizeof(float)));
+	glEnableVertexAttribArray(2);
 
 	auto load = [](std::string path) -> std::string {
 		std::ifstream file(path);

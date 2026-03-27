@@ -15,7 +15,8 @@ Violet::Color& Violet::Image::pixel(size_t x, size_t y) {
 }
 
 Violet::Image::Image(const std::string& path) {
-	FILE* file = fopen(path.c_str(), "rb");
+	FILE* file;
+	fopen_s(&file, path.c_str(), "rb");
 	if (!file)
 		std::terminate();
 

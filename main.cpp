@@ -11,15 +11,16 @@ int main() {
 	Vi::Camera camera;
 
 	Vi::Mesh mesh;
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::purple() });
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::cyan() });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.0f, 0.0f), Vi::Color::yellow() });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5f,-0.5f, 0.0f), Vi::Color::red() });
+	//mesh.texture = Vi::Texture("test_image.png");
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 1.0f) });
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 0.0f) });
+	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 1.0f) });
+	mesh.vertices.push_back({ Vi::Vec3f( 0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 0.0f) });
 	mesh.indices.push_back(0);
 	mesh.indices.push_back(1);
 	mesh.indices.push_back(2);
-	mesh.indices.push_back(1);
 	mesh.indices.push_back(2);
+	mesh.indices.push_back(1);
 	mesh.indices.push_back(3);
 	
 	Vi::Mesh sphere_mesh = Vi::Shapes::sphere(10);
