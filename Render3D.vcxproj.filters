@@ -199,9 +199,6 @@
     <None Include="default.frag">
       <Filter>Render3D\Shaders</Filter>
     </None>
-    <None Include="packages.config">
-      <Filter>Render3D\Miscellaneous</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="todo.txt">
