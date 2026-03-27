@@ -12,10 +12,10 @@ int main() {
 
 	Vi::Mesh mesh;
 	mesh.texture = Vi::Texture("test_image.png");
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::cyan(), Vi::Vec2f( 0.0f, 1.0f) });
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::purple(), Vi::Vec2f( 0.0f, 0.0f) });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.5f, 0.0f), Vi::Color::yellow(), Vi::Vec2f( 1.0f, 1.0f) });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5f,-0.5f, 0.0f), Vi::Color::red(), Vi::Vec2f( 1.0f, 0.0f) });
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 1.0f) });
+	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 0.0f) });
+	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 1.0f) });
+	mesh.vertices.push_back({ Vi::Vec3f( 0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 0.0f) });
 	mesh.indices.push_back(0);
 	mesh.indices.push_back(1);
 	mesh.indices.push_back(2);

@@ -35,14 +35,14 @@ Violet::Material::Material(const std::string& path, GLenum type) {
 	glShaderSource(vert_program, 1, &vert_c_str, nullptr);
 	glCompileShader(vert_program);
 	GLint success;
-	glGetShaderiv(vert_program, GL_LINK_STATUS, &success);
+	glGetShaderiv(vert_program, GL_COMPILE_STATUS, &success);
 	if (!success)
 		std::terminate();
 
 	GLuint frag_program = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(frag_program, 1, &frag_c_str, nullptr);
 	glCompileShader(frag_program);
-	glGetShaderiv(frag_program, GL_LINK_STATUS, &success);
+	glGetShaderiv(frag_program, GL_COMPILE_STATUS, &success);
 	if (!success)
 		std::terminate();
 
