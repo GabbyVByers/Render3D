@@ -90,16 +90,16 @@
     <ClCompile Include="Window.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Types.Math.cpp">
-      <Filter>Render3D\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.Math.cpp">
-      <Filter>Render3D\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Shapes.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.Texture.cpp">
+      <Filter>Render3D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Types.Mat4f.cpp">
+      <Filter>Render3D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.Transform.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

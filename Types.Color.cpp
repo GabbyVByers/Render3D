@@ -4,47 +4,45 @@
 */
 
 #include "Types.h"
-#include <algorithm>
-#include <cstdlib>
 
-Violet::Color::Color() {
-	r = 1.0f;
-	g = 1.0f;
-	b = 1.0f;
-	a = 1.0f;
+namespace Violet {
+
+	Color::Color() {
+		r = 1.0f;
+		g = 1.0f;
+		b = 1.0f;
+		a = 1.0f;
+	}
+	Color::Color(float r, float g, float b, float a) {
+		this->r = r;
+		this->g = g;
+		this->b = b;
+		this->a = a;
+	}
+
+	Color Color::random() {
+		return {
+			(float)rand() / (float)RAND_MAX,
+			(float)rand() / (float)RAND_MAX,
+			(float)rand() / (float)RAND_MAX,
+			1.0
+		};
+	}
+	Color Color::white()  { return { 1.0f, 1.0f, 1.0f, 1.0f }; }
+	Color Color::black()  { return { 0.0f, 0.0f, 0.0f, 1.0f }; }
+	Color Color::red()    { return { 1.0f, 0.0f, 0.0f, 1.0f }; }
+	Color Color::green()  { return { 0.0f, 1.0f, 0.0f, 1.0f }; }
+	Color Color::blue()   { return { 0.0f, 0.0f, 1.0f, 1.0f }; }
+	Color Color::cyan()   { return { 0.0f, 1.0f, 1.0f, 1.0f }; }
+	Color Color::purple() { return { 1.0f, 0.0f, 1.0f, 1.0f }; }
+	Color Color::yellow() { return { 1.0f, 1.0f, 0.0f, 1.0f }; }
+
+	static float clamp(float value) {
+		return std::max(0.0f, std::min(value, 1.0f));
+	}
+	Color Color::operator *  (const float scale) const { return { clamp(r * scale), clamp(g * scale), clamp(b * scale) }; }
+	Color Color::operator /  (const float scale) const { return { clamp(r / scale), clamp(g / scale), clamp(b / scale) }; }
+	void  Color::operator *= (const float scale) { clamp(r *= scale); clamp(g *= scale); clamp(b *= scale); }
+	void  Color::operator /= (const float scale) { clamp(r /= scale); clamp(g /= scale); clamp(b /= scale); }
 }
-
-Violet::Color::Color(float r, float g, float b, float a) {
-	this->r = r;
-	this->g = g;
-	this->b = b;
-	this->a = a;
-}
-
-Violet::Color Violet::Color::random() {
-	return {
-		(float)rand() / (float)RAND_MAX,
-		(float)rand() / (float)RAND_MAX,
-		(float)rand() / (float)RAND_MAX,
-		1.0
-	};
-}
-
-Violet::Color Violet::Color::white()  { return { 1.0f, 1.0f, 1.0f, 1.0f }; }
-Violet::Color Violet::Color::black()  { return { 0.0f, 0.0f, 0.0f, 1.0f }; }
-Violet::Color Violet::Color::red()    { return { 1.0f, 0.0f, 0.0f, 1.0f }; }
-Violet::Color Violet::Color::green()  { return { 0.0f, 1.0f, 0.0f, 1.0f }; }
-Violet::Color Violet::Color::blue()   { return { 0.0f, 0.0f, 1.0f, 1.0f }; }
-Violet::Color Violet::Color::cyan()   { return { 0.0f, 1.0f, 1.0f, 1.0f }; }
-Violet::Color Violet::Color::purple() { return { 1.0f, 0.0f, 1.0f, 1.0f }; }
-Violet::Color Violet::Color::yellow() { return { 1.0f, 1.0f, 0.0f, 1.0f }; }
-
-float Violet::Color::clamp(float value) {
-	return std::max(0.0f, std::min(value, 1.0f));
-}
-
-Violet::Color Violet::Color::operator * (const float scale) const { return { clamp(r * scale), clamp(g * scale), clamp(b * scale) }; }
-Violet::Color Violet::Color::operator / (const float scale) const { return { clamp(r / scale), clamp(g / scale), clamp(b / scale) }; }
-void Violet::Color::operator *= (const float scale) { clamp(r *= scale); clamp(g *= scale); clamp(b *= scale); }
-void Violet::Color::operator /= (const float scale) { clamp(r /= scale); clamp(g /= scale); clamp(b /= scale); }
 

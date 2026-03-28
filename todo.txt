@@ -8,16 +8,17 @@ TODO:
     6. Shape::sphere, cube, arrow - debug normals on triangles w/ arrows.
     7. Add flag to mesh that tracks if vertices edited since last draw call.
     8. Encapsulate camera and transform transformations (separately).
-    9. Merge headers into fewer headers, Maintain single Chain, Review cpp includes.
     10. Bring back ebo mesh "Vi::IndexMesh"? for loading external geometry.
     11. Make a model builder?
     12. Networking/Sockets.
     13. Ability to interact with meshies.
+    14. Add all move/copy members to Vec2/Vec3
 
 Resolved:
     1. Mesh owns OpenGL handles and deletes them in ~Mesh(),
     but copy/move behavior is not disabled or implemented.
     2. Vi::Texture texture (add to mesh) + vertex needs tex coords.
+    3. Merge headers into fewer headers, Maintain single Chain, Review cpp includes.
 
 Descided Against:
     1. Implementing a special draw() to window for each meshie.

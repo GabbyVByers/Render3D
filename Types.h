@@ -9,8 +9,14 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#include <algorithm>
+#include <numbers>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
+#include <cstdlib>
+#include <cmath>
 
 namespace Violet {
 
@@ -34,17 +40,24 @@ namespace Violet {
 		static int hypot(const Vec2i& vec);
 		static int dot(const Vec2i& a, const Vec2i& b);
 		static int cross(const Vec2i& a, const Vec2i& b);
-		static Vec2i normalize(const Vec2i& vec);
 
+		Vec2i(const Vec2i& vec);
+		Vec2i(const Vec2f& vec);
+		Vec2i(const Vec2d& vec);
+		Vec2i(Vec2i&& vec) noexcept;
+		Vec2i(Vec2f&& vec) noexcept;
+		Vec2i(Vec2d&& vec) noexcept;
 		Vec2i& operator = (const Vec2i& vec);
 		Vec2i& operator = (const Vec2f& vec);
 		Vec2i& operator = (const Vec2d& vec);
+		Vec2i& operator = (Vec2i&& vec) noexcept;
+		Vec2i& operator = (Vec2f&& vec) noexcept;
+		Vec2i& operator = (Vec2d&& vec) noexcept;
 
-		Vec2i operator + (const Vec2i& vec) const;
-		Vec2i operator - (const Vec2i& vec) const;
-		Vec2i operator * (const int scale)  const;
-		Vec2i operator / (const int scale)  const;
-
+		Vec2i operator +  (const Vec2i& vec) const;
+		Vec2i operator -  (const Vec2i& vec) const;
+		Vec2i operator *  (const int scale)  const;
+		Vec2i operator /  (const int scale)  const;
 		void  operator += (const Vec2i& vec);
 		void  operator -= (const Vec2i& vec);
 		void  operator *= (const int scale);
@@ -62,15 +75,23 @@ namespace Violet {
 		static float cross(const Vec2f& a, const Vec2f& b);
 		static Vec2f normalize(const Vec2f& vec);
 
+		Vec2f(const Vec2i& vec);
+		Vec2f(const Vec2f& vec);
+		Vec2f(const Vec2d& vec);
+		Vec2f(Vec2i&& vec) noexcept;
+		Vec2f(Vec2f&& vec) noexcept;
+		Vec2f(Vec2d&& vec) noexcept;
 		Vec2f& operator = (const Vec2i& vec);
 		Vec2f& operator = (const Vec2f& vec);
 		Vec2f& operator = (const Vec2d& vec);
+		Vec2f& operator = (Vec2i&& vec) noexcept;
+		Vec2f& operator = (Vec2f&& vec) noexcept;
+		Vec2f& operator = (Vec2d&& vec) noexcept;
 
-		Vec2f operator + (const Vec2f& vec)  const;
-		Vec2f operator - (const Vec2f& vec)  const;
-		Vec2f operator * (const float scale) const;
-		Vec2f operator / (const float scale) const;
-
+		Vec2f operator +  (const Vec2f& vec)  const;
+		Vec2f operator -  (const Vec2f& vec)  const;
+		Vec2f operator *  (const float scale) const;
+		Vec2f operator /  (const float scale) const;
 		void  operator += (const Vec2f& vec);
 		void  operator -= (const Vec2f& vec);
 		void  operator *= (const float scale);
@@ -88,15 +109,23 @@ namespace Violet {
 		static double cross(const Vec2d& a, const Vec2d& b);
 		static Vec2d normalize(const Vec2d& vec);
 
+		Vec2d(const Vec2i& vec);
+		Vec2d(const Vec2f& vec);
+		Vec2d(const Vec2d& vec);
+		Vec2d(Vec2i&& vec) noexcept;
+		Vec2d(Vec2f&& vec) noexcept;
+		Vec2d(Vec2d&& vec) noexcept;
 		Vec2d& operator = (const Vec2i& vec);
 		Vec2d& operator = (const Vec2f& vec);
 		Vec2d& operator = (const Vec2d& vec);
+		Vec2d& operator = (Vec2i&& vec) noexcept;
+		Vec2d& operator = (Vec2f&& vec) noexcept;
+		Vec2d& operator = (Vec2d&& vec) noexcept;
 
-		Vec2d operator + (const Vec2d& vec)   const;
-		Vec2d operator - (const Vec2d& vec)   const;
-		Vec2d operator * (const double scale) const;
-		Vec2d operator / (const double scale) const;
-
+		Vec2d operator +  (const Vec2d& vec)   const;
+		Vec2d operator -  (const Vec2d& vec)   const;
+		Vec2d operator *  (const double scale) const;
+		Vec2d operator /  (const double scale) const;
 		void  operator += (const Vec2d& vec);
 		void  operator -= (const Vec2d& vec);
 		void  operator *= (const double scale);
@@ -112,17 +141,24 @@ namespace Violet {
 		static int hypot(const Vec3i& vec);
 		static int dot(const Vec3i& a, const Vec3i& b);
 		static Vec3i cross(const Vec3i& a, const Vec3i& b);
-		static Vec3i normalize(const Vec3i& vec);
 
+		Vec3i(const Vec3i& vec);
+		Vec3i(const Vec3f& vec);
+		Vec3i(const Vec3d& vec);
+		Vec3i(Vec3i&& vec) noexcept;
+		Vec3i(Vec3f&& vec) noexcept;
+		Vec3i(Vec3d&& vec) noexcept;
 		Vec3i& operator = (const Vec3i& vec);
 		Vec3i& operator = (const Vec3f& vec);
 		Vec3i& operator = (const Vec3d& vec);
+		Vec3i& operator = (Vec3i&& vec) noexcept;
+		Vec3i& operator = (Vec3f&& vec) noexcept;
+		Vec3i& operator = (Vec3d&& vec) noexcept;
 
-		Vec3i operator + (const Vec3i& vec) const;
-		Vec3i operator - (const Vec3i& vec) const;
-		Vec3i operator * (const int scale)  const;
-		Vec3i operator / (const int scale)  const;
-
+		Vec3i operator +  (const Vec3i& vec) const;
+		Vec3i operator -  (const Vec3i& vec) const;
+		Vec3i operator *  (const int scale)  const;
+		Vec3i operator /  (const int scale)  const;
 		void  operator += (const Vec3i& vec);
 		void  operator -= (const Vec3i& vec);
 		void  operator *= (const int scale);
@@ -140,15 +176,27 @@ namespace Violet {
 		static Vec3f cross(const Vec3f& a, const Vec3f& b);
 		static Vec3f normalize(const Vec3f& vec);
 
+		static Vec3f rotate(const Vec3f& vec, const Vec3i& axis, float theta);
+		static Vec3f rotate(const Vec3f& vec, const Vec3f& axis, float theta);
+		static Vec3f rotate(const Vec3f& vec, const Quat& rotation_quat);
+
+		Vec3f(const Vec3i& vec);
+		Vec3f(const Vec3f& vec);
+		Vec3f(const Vec3d& vec);
+		Vec3f(Vec3i&& vec) noexcept;
+		Vec3f(Vec3f&& vec) noexcept;
+		Vec3f(Vec3d&& vec) noexcept;
 		Vec3f& operator = (const Vec3i& vec);
 		Vec3f& operator = (const Vec3f& vec);
 		Vec3f& operator = (const Vec3d& vec);
+		Vec3f& operator = (Vec3i&& vec) noexcept;
+		Vec3f& operator = (Vec3f&& vec) noexcept;
+		Vec3f& operator = (Vec3d&& vec) noexcept;
 
-		Vec3f operator + (const Vec3f& vec)  const;
-		Vec3f operator - (const Vec3f& vec)  const;
-		Vec3f operator * (const float scale) const;
-		Vec3f operator / (const float scale) const;
-
+		Vec3f operator +  (const Vec3f& vec)  const;
+		Vec3f operator -  (const Vec3f& vec)  const;
+		Vec3f operator *  (const float scale) const;
+		Vec3f operator /  (const float scale) const;
 		void  operator += (const Vec3f& vec);
 		void  operator -= (const Vec3f& vec);
 		void  operator *= (const float scale);
@@ -166,15 +214,27 @@ namespace Violet {
 		static Vec3d cross(const Vec3d& a, const Vec3d& b);
 		static Vec3d normalize(const Vec3d& vec);
 
+		static Vec3d rotate(const Vec3d& vec, const Vec3i& axis, double theta);
+		static Vec3d rotate(const Vec3d& vec, const Vec3d& axis, double theta);
+		static Vec3d rotate(const Vec3d& vec, const Quat& rotation_quat);
+
+		Vec3d(const Vec3i& vec);
+		Vec3d(const Vec3f& vec);
+		Vec3d(const Vec3d& vec);
+		Vec3d(Vec3i&& vec) noexcept;
+		Vec3d(Vec3f&& vec) noexcept;
+		Vec3d(Vec3d&& vec) noexcept;
 		Vec3d& operator = (const Vec3i& vec);
 		Vec3d& operator = (const Vec3f& vec);
 		Vec3d& operator = (const Vec3d& vec);
+		Vec3d& operator = (Vec3i&& vec) noexcept;
+		Vec3d& operator = (Vec3f&& vec) noexcept;
+		Vec3d& operator = (Vec3d&& vec) noexcept;
 
-		Vec3d operator + (const Vec3d& vec)   const;
-		Vec3d operator - (const Vec3d& vec)   const;
-		Vec3d operator * (const double scale) const;
-		Vec3d operator / (const double scale) const;
-
+		Vec3d operator +  (const Vec3d& vec)   const;
+		Vec3d operator -  (const Vec3d& vec)   const;
+		Vec3d operator *  (const double scale) const;
+		Vec3d operator /  (const double scale) const;
 		void  operator += (const Vec3d& vec);
 		void  operator -= (const Vec3d& vec);
 		void  operator *= (const double scale);
@@ -191,13 +251,25 @@ namespace Violet {
 			double i, double j, double k, double l,
 			double m, double n, double o, double p
 		);
+
+		static Mat4 scalar_matrix(double scale);
+		static Mat4 translation_matrix(const Vec3d& position);
+		static Mat4 rotation_matrix(const Quat& rotation_quat);
+
 		Mat4 operator * (const Mat4& matrix) const;
 	};
 
 	class Mat4f {
 	public:
 		float data[4][4];
-		Mat4f();
+		Mat4f(const Mat4& matrix);
+
+	private:
+		Mat4f() = delete;
+		Mat4f(const Mat4f& matrix) = delete;
+		Mat4f(Mat4f&& matrix) noexcept = delete;
+		Mat4f& operator = (const Mat4f& matrix) = delete;
+		Mat4f& operator = (Mat4f&& matrix) noexcept = delete;
 	};
 
 	class Quat {
@@ -208,6 +280,10 @@ namespace Violet {
 
 		static Quat normalize(const Quat& quat);
 		static Quat complex_conjugate(const Quat& quat);
+
+		static Quat rotation(const Vec3i& axis, double theta);
+		static Quat rotation(const Vec3f& axis, double theta);
+		static Quat rotation(const Vec3d& axis, double theta);
 
 		Quat operator * (const Quat& q) const;
 	};
@@ -232,26 +308,6 @@ namespace Violet {
 		Color operator /  (const float scale) const;
 		void  operator *= (const float scale);
 		void  operator /= (const float scale);
-
-	private:
-		static float clamp(float value);
 	};
-
-	namespace Math {
-
-		constexpr double Pi64 = 3.141592653589793;
-		constexpr float  Pi32 = 3.1415927f;
-
-		Vec3f  rotate_around_axis(const Vec3f& vec, const Vec3i& axis, float  theta);
-		Vec3f  rotate_around_axis(const Vec3f& vec, const Vec3f& axis, float  theta);
-		Vec3d  rotate_around_axis(const Vec3d& vec, const Vec3i& axis, double theta);
-		Vec3d  rotate_around_axis(const Vec3d& vec, const Vec3d& axis, double theta);
-		Vec3f  apply_quat_rotation(const Vec3f& vec, const Quat& rotation_quat);
-		Vec3d  apply_quat_rotation(const Vec3d& vec, const Quat& rotation_quat);
-
-		Quat rotation_quat(const Vec3i& axis, double theta);
-		Quat rotation_quat(const Vec3f& axis, double theta);
-		Quat rotation_quat(const Vec3d& axis, double theta);
-	}
 }
 

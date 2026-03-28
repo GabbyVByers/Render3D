@@ -15,7 +15,7 @@ namespace Violet {
 
 		namespace Immediate {
 
-			Mesh bounding_box(const Color& color);
+			void bounding_box(const Mesh& mesh, const Color& color);
 			//Mesh arrow();
 		}
 	};

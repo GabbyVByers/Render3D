@@ -29,16 +29,16 @@ namespace Violet {
 		std::vector<GlfwMouseEvent> mouse_events;
 		std::vector<GlfwScrollEvent> scroll_events;
 
-		Mouse(GLFWwindow* window_ptr);
-		~Mouse();
+		Mouse(GLFWwindow* ptr);
+		~Mouse() {};
 		void reset();
 		void push_mouse_event(GlfwMouseEvent mouse_event);
 		void push_scroll_event(GlfwScrollEvent scroll_event);
 
-		Mouse(const Mouse& other) = delete;
-		Mouse(Mouse&& other) noexcept = delete;
-		Mouse& operator = (const Mouse& other) = delete;
-		Mouse& operator = (Mouse&& other) noexcept = delete;
+		Mouse(const Mouse& mouse) = delete;
+		Mouse(Mouse&& mouse) noexcept = delete;
+		Mouse& operator = (const Mouse& mouse) = delete;
+		Mouse& operator = (Mouse&& mouse) noexcept = delete;
 	};
 
 	class Keyboard {
@@ -51,22 +51,23 @@ namespace Violet {
 		GLFWwindow* window_ptr;
 		std::vector<GlfwKeyboardEvent> keyboard_events;
 
-		Keyboard(GLFWwindow* window_ptr);
-		~Keyboard();
+		Keyboard(GLFWwindow* ptr);
+		~Keyboard() {};
 		void reset();
 		void push_key_event(GlfwKeyboardEvent& key_event);
 
-		Keyboard(const Keyboard& other) = delete;
-		Keyboard(Keyboard&& other) = delete;
-		Keyboard& operator = (const Keyboard& other) = delete;
-		Keyboard& operator = (Keyboard&& other) = delete;
+		Keyboard(const Keyboard& keyboard) = delete;
+		Keyboard(Keyboard&& keyboard) noexcept = delete;
+		Keyboard& operator = (const Keyboard& keyboard) = delete;
+		Keyboard& operator = (Keyboard&& keyboard) noexcept = delete;
 	};
 
 	class Window {
 	public:
 		Window(std::string title, int width, int height);
 		~Window();
-		static Vec2i size();
+
+		Vec2i size();
 		void vsync(bool vsync);
 		bool is_open();
 		void poll_events();
@@ -78,16 +79,17 @@ namespace Violet {
 		static Keyboard& keyboard();
 
 	private:
+		inline static size_t instances = NULL;
 		inline static GLFWwindow* window_ptr = nullptr;
-		static void callback_window_resize(GLFWwindow* window_ptr, int width, int height);
-		static void callback_keyboard(GLFWwindow* window_ptr, int key, int scancode, int action, int mods);
-		static void callback_mouse(GLFWwindow* window_ptr, int button, int action, int mods);
-		static void callback_mousescroll(GLFWwindow* window_ptr, double xoffset, double yoffset);
+		static void callback_window_resize(GLFWwindow* ptr, int width, int height);
+		static void callback_keyboard(GLFWwindow* ptr, int key, int scancode, int action, int mods);
+		static void callback_mouse(GLFWwindow* ptr, int button, int action, int mods);
+		static void callback_mousescroll(GLFWwindow* ptr, double xoffset, double yoffset);
 
-		Window(const Window& other)              = delete;
-		Window(Window&& other)                   = delete;
+		Window(const Window& other) = delete;
+		Window(Window&& other) noexcept = delete;
 		Window& operator = (const Window& other) = delete;
-		Window& operator = (Window&& other)      = delete;
+		Window& operator = (Window&& other) noexcept = delete;
 	};
 }
 

@@ -159,8 +159,8 @@
     <ClCompile Include="ImGui\imgui_tables.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mesh.Math.cpp" />
-    <ClCompile Include="Types.Math.cpp" />
+    <ClCompile Include="Mesh.Transform.cpp" />
+    <ClCompile Include="Types.Mat4f.cpp" />
     <ClCompile Include="Shapes.cpp" />
     <ClCompile Include="Mesh.Texture.cpp" />
     <ClCompile Include="Types.Vec2d.cpp" />
