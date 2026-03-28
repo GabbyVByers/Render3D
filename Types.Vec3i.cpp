@@ -1,5 +1,9 @@
 
-#include "Vec3.h"
+/*
+	Types.Vec3i.cpp
+*/
+
+#include "Types.h"
 #include <cmath>
 #include <vector>
 

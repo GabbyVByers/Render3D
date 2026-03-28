@@ -1,5 +1,9 @@
 
-#include "Mouse.h"
+/*
+	Window.Mouse.cpp
+*/
+
+#include "Window.h"
 
 Violet::Mouse::Mouse(GLFWwindow* window_ptr) { this->window_ptr = window_ptr; }
 Violet::Mouse::~Mouse() {}
@@ -7,15 +11,15 @@ Violet::Mouse::~Mouse() {}
 Violet::Vec2d Violet::Mouse::position() const { return pos; }
 Violet::Vec2d Violet::Mouse::velocity() const { return vel; }
 
-bool Violet::Mouse::pressing(int BUTTON) const {
-	return glfwGetMouseButton(window_ptr, BUTTON) == GLFW_PRESS;
+bool Violet::Mouse::pressing(int button) const {
+	return glfwGetMouseButton(window_ptr, button) == GLFW_PRESS;
 }
 
-bool Violet::Mouse::clicked(int BUTTON, int ACTION) const {
+bool Violet::Mouse::clicked(int button, int edge) const {
 	for (const GlfwMouseEvent& mouse_event : mouse_events) {
-		if (mouse_event.button != BUTTON)
+		if (mouse_event.button != button)
 			continue;
-		if (mouse_event.action != ACTION)
+		if (mouse_event.action != edge)
 			continue;
 		return true;
 	}

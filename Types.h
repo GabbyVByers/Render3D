@@ -1,0 +1,257 @@
+
+/*
+	Types.h
+*/
+
+#pragma once
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include <string>
+#include <vector>
+
+namespace Violet {
+
+	class Vec2i;
+	class Vec2f;
+	class Vec2d;
+	class Vec3i;
+	class Vec3f;
+	class Vec3d;
+	class Mat4;
+	class Mat4f;
+	class Quat;
+	class Color;
+
+	class Vec2i {
+	public:
+		int x, y;
+		Vec2i();
+		Vec2i(int x, int y);
+
+		static int hypot(const Vec2i& vec);
+		static int dot(const Vec2i& a, const Vec2i& b);
+		static int cross(const Vec2i& a, const Vec2i& b);
+		static Vec2i normalize(const Vec2i& vec);
+
+		Vec2i& operator = (const Vec2i& vec);
+		Vec2i& operator = (const Vec2f& vec);
+		Vec2i& operator = (const Vec2d& vec);
+
+		Vec2i operator + (const Vec2i& vec) const;
+		Vec2i operator - (const Vec2i& vec) const;
+		Vec2i operator * (const int scale)  const;
+		Vec2i operator / (const int scale)  const;
+
+		void  operator += (const Vec2i& vec);
+		void  operator -= (const Vec2i& vec);
+		void  operator *= (const int scale);
+		void  operator /= (const int scale);
+	};
+
+	class Vec2f {
+	public:
+		float x, y;
+		Vec2f();
+		Vec2f(float x, float y);
+
+		static float hypot(const Vec2f& vec);
+		static float dot(const Vec2f& a, const Vec2f& b);
+		static float cross(const Vec2f& a, const Vec2f& b);
+		static Vec2f normalize(const Vec2f& vec);
+
+		Vec2f& operator = (const Vec2i& vec);
+		Vec2f& operator = (const Vec2f& vec);
+		Vec2f& operator = (const Vec2d& vec);
+
+		Vec2f operator + (const Vec2f& vec)  const;
+		Vec2f operator - (const Vec2f& vec)  const;
+		Vec2f operator * (const float scale) const;
+		Vec2f operator / (const float scale) const;
+
+		void  operator += (const Vec2f& vec);
+		void  operator -= (const Vec2f& vec);
+		void  operator *= (const float scale);
+		void  operator /= (const float scale);
+	};
+
+	class Vec2d {
+	public:
+		double x, y;
+		Vec2d();
+		Vec2d(double x, double y);
+
+		static double hypot(const Vec2d& vec);
+		static double dot(const Vec2d& a, const Vec2d& b);
+		static double cross(const Vec2d& a, const Vec2d& b);
+		static Vec2d normalize(const Vec2d& vec);
+
+		Vec2d& operator = (const Vec2i& vec);
+		Vec2d& operator = (const Vec2f& vec);
+		Vec2d& operator = (const Vec2d& vec);
+
+		Vec2d operator + (const Vec2d& vec)   const;
+		Vec2d operator - (const Vec2d& vec)   const;
+		Vec2d operator * (const double scale) const;
+		Vec2d operator / (const double scale) const;
+
+		void  operator += (const Vec2d& vec);
+		void  operator -= (const Vec2d& vec);
+		void  operator *= (const double scale);
+		void  operator /= (const double scale);
+	};
+
+	class Vec3i {
+	public:
+		int x, y, z;
+		Vec3i();
+		Vec3i(int x, int y, int z);
+
+		static int hypot(const Vec3i& vec);
+		static int dot(const Vec3i& a, const Vec3i& b);
+		static Vec3i cross(const Vec3i& a, const Vec3i& b);
+		static Vec3i normalize(const Vec3i& vec);
+
+		Vec3i& operator = (const Vec3i& vec);
+		Vec3i& operator = (const Vec3f& vec);
+		Vec3i& operator = (const Vec3d& vec);
+
+		Vec3i operator + (const Vec3i& vec) const;
+		Vec3i operator - (const Vec3i& vec) const;
+		Vec3i operator * (const int scale)  const;
+		Vec3i operator / (const int scale)  const;
+
+		void  operator += (const Vec3i& vec);
+		void  operator -= (const Vec3i& vec);
+		void  operator *= (const int scale);
+		void  operator /= (const int scale);
+	};
+
+	class Vec3f {
+	public:
+		float x, y, z;
+		Vec3f();
+		Vec3f(float x, float y, float z);
+
+		static float hypot(const Vec3f& vec);
+		static float dot(const Vec3f& a, const Vec3f& b);
+		static Vec3f cross(const Vec3f& a, const Vec3f& b);
+		static Vec3f normalize(const Vec3f& vec);
+
+		Vec3f& operator = (const Vec3i& vec);
+		Vec3f& operator = (const Vec3f& vec);
+		Vec3f& operator = (const Vec3d& vec);
+
+		Vec3f operator + (const Vec3f& vec)  const;
+		Vec3f operator - (const Vec3f& vec)  const;
+		Vec3f operator * (const float scale) const;
+		Vec3f operator / (const float scale) const;
+
+		void  operator += (const Vec3f& vec);
+		void  operator -= (const Vec3f& vec);
+		void  operator *= (const float scale);
+		void  operator /= (const float scale);
+	};
+
+	class Vec3d {
+	public:
+		double x, y, z;
+		Vec3d();
+		Vec3d(double x, double y, double z);
+
+		static double hypot(const Vec3d& vec);
+		static double dot(const Vec3d& a, const Vec3d& b);
+		static Vec3d cross(const Vec3d& a, const Vec3d& b);
+		static Vec3d normalize(const Vec3d& vec);
+
+		Vec3d& operator = (const Vec3i& vec);
+		Vec3d& operator = (const Vec3f& vec);
+		Vec3d& operator = (const Vec3d& vec);
+
+		Vec3d operator + (const Vec3d& vec)   const;
+		Vec3d operator - (const Vec3d& vec)   const;
+		Vec3d operator * (const double scale) const;
+		Vec3d operator / (const double scale) const;
+
+		void  operator += (const Vec3d& vec);
+		void  operator -= (const Vec3d& vec);
+		void  operator *= (const double scale);
+		void  operator /= (const double scale);
+	};
+
+	class Mat4 {
+	public:
+		double data[4][4];
+		Mat4();
+		Mat4(
+			double a, double b, double c, double d,
+			double e, double f, double g, double h,
+			double i, double j, double k, double l,
+			double m, double n, double o, double p
+		);
+		Mat4 operator * (const Mat4& matrix) const;
+	};
+
+	class Mat4f {
+	public:
+		float data[4][4];
+		Mat4f();
+	};
+
+	class Quat {
+	public:
+		double w, x, y, z;
+		Quat();
+		Quat(double w, double x, double y, double z);
+
+		static Quat normalize(const Quat& quat);
+		static Quat complex_conjugate(const Quat& quat);
+
+		Quat operator * (const Quat& q) const;
+	};
+
+	class Color {
+	public:
+		float r, g, b, a;
+		Color();
+		Color(float r, float g, float b, float a = 1.0f);
+
+		static Color random();
+		static Color white();
+		static Color black();
+		static Color red();
+		static Color green();
+		static Color blue();
+		static Color cyan();
+		static Color purple();
+		static Color yellow();
+
+		Color operator *  (const float scale) const;
+		Color operator /  (const float scale) const;
+		void  operator *= (const float scale);
+		void  operator /= (const float scale);
+
+	private:
+		static float clamp(float value);
+	};
+
+	namespace Math {
+
+		constexpr double Pi64 = 3.141592653589793;
+		constexpr float  Pi32 = 3.1415927f;
+
+		Vec3f  rotate_around_axis(const Vec3f& vec, const Vec3i& axis, float  theta);
+		Vec3f  rotate_around_axis(const Vec3f& vec, const Vec3f& axis, float  theta);
+		Vec3d  rotate_around_axis(const Vec3d& vec, const Vec3i& axis, double theta);
+		Vec3d  rotate_around_axis(const Vec3d& vec, const Vec3d& axis, double theta);
+		Vec3f  apply_quat_rotation(const Vec3f& vec, const Quat& rotation_quat);
+		Vec3d  apply_quat_rotation(const Vec3d& vec, const Quat& rotation_quat);
+
+		Quat rotation_quat(const Vec3i& axis, double theta);
+		Quat rotation_quat(const Vec3f& axis, double theta);
+		Quat rotation_quat(const Vec3d& axis, double theta);
+	}
+}
+

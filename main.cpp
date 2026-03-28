@@ -1,13 +1,16 @@
 
-#include "Violet3D.h"
+#include "Window.h"
 #include <iostream>
+
+#define Vi Vi
+namespace Vi = Violet;
 
 static void input_test();
 static void debug_gui(Vi::Window& window, Vi::Camera& camera);
 static void control_camera(Vi::Camera& camera);
 
 int main() {
-	Vi::Window window("Render3D Demo", 1920, 1080);
+	Vi::Window window("Violet3D Demo", 1920, 1080);
 	Vi::Camera camera;
 
 	Vi::Mesh mesh;

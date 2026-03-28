@@ -1,5 +1,9 @@
 
-#include "Vec2.h"
+/*
+	Types.Vec2f.cpp
+*/
+
+#include "Types.h"
 #include <cmath>
 
 Violet::Vec2f::Vec2f() { x = 0.0f; y = 0.0f; }

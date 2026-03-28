@@ -1,8 +1,71 @@
 
+/*
+	Mesh.h
+*/
+
 #pragma once
-#include "Camera.h"
+#include "Types.h"
 
 namespace Violet {
+
+	class Camera;
+	class Material;
+	class Transform;
+	class Texture;
+	class Vertex;
+	class Mesh;
+
+	class Camera {
+	public:
+		Camera();
+		double fov_degrees;
+		double near, far;
+		Vec3d  position;
+		Quat   orientation;
+
+		static Vec3d forward_dir(const Camera& camera);
+		static Vec3d up_dir(const Camera& camera);
+		static Vec3d right_dir(const Camera& camera);
+	};
+
+	class Material {
+	public:
+		GLuint vao = NULL;
+		GLuint vbo = NULL;
+		GLuint shader = NULL;
+		GLenum primitive = NULL;
+		Material(const std::string& path, GLenum type);
+		~Material();
+		Material(Material&& other) noexcept;
+		Material(const Material& other) = delete;
+		Material& operator = (Material&& other) noexcept;
+		Material& operator = (const Material& other) = delete;
+	};
+
+	class Transform {
+	public:
+		double scale = 1.0;
+		Vec3d position = Vec3d();
+		Quat orientation = Quat();
+	};
+
+	class Texture {
+	public:
+		GLuint texture = NULL;
+		Texture(const std::string& path = "default_no_texture");
+		~Texture();
+		Texture(Texture&& other) noexcept;
+		Texture(const Texture& other) = delete;
+		Texture& operator = (Texture&& other) noexcept;
+		Texture& operator = (const Texture& other) = delete;
+	};
+
+	class Vertex {
+	public:
+		Vec3f position = Vec3f();
+		Color color = Color::white();
+		Vec2f tex_coord = Vec2f();
+	};
 
 	class Mesh {
 	public:
@@ -11,5 +74,18 @@ namespace Violet {
 		Texture texture = Texture();
 		std::vector<Vertex> vertices = std::vector<Vertex>();
 	};
+
+	namespace Math {
+
+		// all of these functions belong to obvious classes - i will change this
+		Mat4  model_matrix(const Mesh& mesh);
+		Mat4  view_matrix(const Camera& camera);
+		Mat4  projection_matrix(const Camera& camera, const Vec2i& window_size);
+
+		Mat4  scalar_matrix(double scale);
+		Mat4  translation_matrix(const Vec3d& position);
+		Mat4  rotation_matrix(const Quat& rotation);
+		Mat4f float_matrix(const Mat4& matrix);
+	}
 }
 

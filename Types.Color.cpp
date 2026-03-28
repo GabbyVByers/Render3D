@@ -1,5 +1,9 @@
 
-#include "Color.h"
+/*
+	Types.Color.cpp
+*/
+
+#include "Types.h"
 #include <algorithm>
 #include <cstdlib>
 

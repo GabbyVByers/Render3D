@@ -1,9 +1,66 @@
 
+/*
+	Window.h
+*/
+
 #pragma once
-#include "Rendermath.h"
-#include "Keyboard.h"
+#include "GlfwEvent.h"
+#include "Mesh.h"
+#include "Shapes.h"
 
 namespace Violet {
+
+	class Mouse;
+	class Keyboard;
+	class Window;
+
+	class Mouse {
+	public:
+		Vec2d position() const;
+		Vec2d velocity() const;
+		bool pressing(int button) const;
+		bool clicked(int button, int edge) const;
+		double scroll() const;
+
+	private:
+		friend Window;
+		GLFWwindow* window_ptr;
+		Vec2d pos, vel;
+		std::vector<GlfwMouseEvent> mouse_events;
+		std::vector<GlfwScrollEvent> scroll_events;
+
+		Mouse(GLFWwindow* window_ptr);
+		~Mouse();
+		void reset();
+		void push_mouse_event(GlfwMouseEvent mouse_event);
+		void push_scroll_event(GlfwScrollEvent scroll_event);
+
+		Mouse(const Mouse& other) = delete;
+		Mouse(Mouse&& other) noexcept = delete;
+		Mouse& operator = (const Mouse& other) = delete;
+		Mouse& operator = (Mouse&& other) noexcept = delete;
+	};
+
+	class Keyboard {
+	public:
+		bool pressed(int key, int edge);
+		bool pressing(int key);
+
+	private:
+		friend Window;
+		GLFWwindow* window_ptr;
+		std::vector<GlfwKeyboardEvent> keyboard_events;
+
+		Keyboard(GLFWwindow* window_ptr);
+		~Keyboard();
+		void reset();
+		void push_key_event(GlfwKeyboardEvent& key_event);
+
+		Keyboard(const Keyboard& other) = delete;
+		Keyboard(Keyboard&& other) = delete;
+		Keyboard& operator = (const Keyboard& other) = delete;
+		Keyboard& operator = (Keyboard&& other) = delete;
+	};
 
 	class Window {
 	public:

@@ -1,4 +1,8 @@
 
+/*
+	Window.cpp
+*/
+
 #include "Window.h"
 
 Violet::Window::Window(std::string title, int width, int height) {

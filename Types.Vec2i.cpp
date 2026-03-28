@@ -1,5 +1,9 @@
 
-#include "Vec2.h"
+/*
+	Types.Vec2i.cpp
+*/
+
+#include "Types.h"
 #include <cmath>
 #include <vector>
 

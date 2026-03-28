@@ -1,5 +1,9 @@
 
-#include "Quat.h"
+/*
+	Types.Quat.cpp
+*/
+
+#include "Types.h"
 #include <cmath>
 
 Violet::Quat::Quat() {

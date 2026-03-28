@@ -1,6 +1,10 @@
 
+/*
+	GlfwEvent.h
+*/
+
 #pragma once
-#include "Corelib.h"
+#include "Types.h"
 
 namespace Violet {
 
