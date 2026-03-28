@@ -1,10 +1,8 @@
 
 TODO:
     1. Upgrade to OpenGL 4.6.
-    2. add CUDA.
-    3. const-correctness could be tightened in a few places.
+    2. add CUDA?
     4. Remove EBO + Implement single normal per triangle lighting.
-    5. Window does not need to be singleton, may remove static from all funcs.
     6. Shape::sphere, cube, arrow - debug normals on triangles w/ arrows.
     7. Add flag to mesh that tracks if vertices edited since last draw call.
     8. Encapsulate camera and transform transformations (separately).
@@ -14,15 +12,16 @@ TODO:
     13. Ability to interact with meshies.
     14. Add all move/copy members to Vec2/Vec3
 
-Resolved:
+Implemented:
     1. Mesh owns OpenGL handles and deletes them in ~Mesh(),
     but copy/move behavior is not disabled or implemented.
     2. Vi::Texture texture (add to mesh) + vertex needs tex coords.
     3. Merge headers into fewer headers, Maintain single Chain, Review cpp includes.
 
-Descided Against:
+Rejected:
     1. Implementing a special draw() to window for each meshie.
     2. mesh is most generic thing you can draw and can be used openendedly.
     3. inherited meshies implement: generating geometry + calculating tex coords.
     4. (inheritance) mesh -> sphere -> cube -> arrow
+    5. Window does not need to be singleton, may remove static from all funcs.
 

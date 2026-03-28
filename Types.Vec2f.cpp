@@ -15,6 +15,8 @@ namespace Violet {
 	float Violet::Vec2f::cross(const Vec2f& a, const Vec2f& b) { return (a.x * b.y) - (a.y * b.x); }
 	Violet::Vec2f Violet::Vec2f::normalize(const Vec2f& vec) {
 		float len = hypot(vec);
+		if (len == 0.0f)
+			return Vec2f();
 		return {
 			vec.x / len,
 			vec.y / len

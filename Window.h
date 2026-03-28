@@ -16,6 +16,7 @@ namespace Violet {
 
 	class Mouse {
 	public:
+		Mouse() {};
 		Vec2d position() const;
 		Vec2d velocity() const;
 		bool pressing(int button) const;
@@ -24,13 +25,11 @@ namespace Violet {
 
 	private:
 		friend Window;
-		GLFWwindow* window_ptr;
-		Vec2d pos, vel;
+		Vec2d pos = Vec2d();
+		Vec2d vel = Vec2d();
+		GLFWwindow* window_ptr = nullptr;
 		std::vector<GlfwMouseEvent> mouse_events;
 		std::vector<GlfwScrollEvent> scroll_events;
-
-		Mouse(GLFWwindow* ptr);
-		~Mouse() {};
 		void reset();
 		void push_mouse_event(GlfwMouseEvent mouse_event);
 		void push_scroll_event(GlfwScrollEvent scroll_event);
@@ -43,16 +42,14 @@ namespace Violet {
 
 	class Keyboard {
 	public:
-		bool pressed(int key, int edge);
-		bool pressing(int key);
+		Keyboard() {};
+		bool pressed(int key, int edge) const;
+		bool pressing(int key) const;
 
 	private:
 		friend Window;
-		GLFWwindow* window_ptr;
+		GLFWwindow* window_ptr = nullptr;
 		std::vector<GlfwKeyboardEvent> keyboard_events;
-
-		Keyboard(GLFWwindow* ptr);
-		~Keyboard() {};
 		void reset();
 		void push_key_event(GlfwKeyboardEvent& key_event);
 
@@ -81,6 +78,8 @@ namespace Violet {
 	private:
 		inline static size_t instances = NULL;
 		inline static GLFWwindow* window_ptr = nullptr;
+		inline static Mouse internal_mouse = Mouse();
+		inline static Keyboard internal_keyboard = Keyboard();
 		static void callback_window_resize(GLFWwindow* ptr, int width, int height);
 		static void callback_keyboard(GLFWwindow* ptr, int key, int scancode, int action, int mods);
 		static void callback_mouse(GLFWwindow* ptr, int button, int action, int mods);

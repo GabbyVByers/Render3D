@@ -27,7 +27,7 @@ namespace Violet {
 	}
 
 	Mat4 Camera::view_matrix() const {
-		Mat4 translation_matrix_inverse = Mat4::translation_matrix(position);
+		Mat4 translation_matrix_inverse = Mat4::translation_matrix(position * -1.0);
 		Mat4 rotation_matrix_inverse = Mat4::rotation_matrix(Quat::complex_conjugate(orientation));
 		return rotation_matrix_inverse * translation_matrix_inverse;
 	}

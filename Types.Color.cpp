@@ -42,7 +42,7 @@ namespace Violet {
 	}
 	Color Color::operator *  (const float scale) const { return { clamp(r * scale), clamp(g * scale), clamp(b * scale) }; }
 	Color Color::operator /  (const float scale) const { return { clamp(r / scale), clamp(g / scale), clamp(b / scale) }; }
-	void  Color::operator *= (const float scale) { clamp(r *= scale); clamp(g *= scale); clamp(b *= scale); }
-	void  Color::operator /= (const float scale) { clamp(r /= scale); clamp(g /= scale); clamp(b /= scale); }
+	void  Color::operator *= (const float scale) { r = clamp(r * scale); g = clamp(g * scale); b = clamp(b * scale); }
+	void  Color::operator /= (const float scale) { r = clamp(r / scale); g = clamp(g / scale); b = clamp(b / scale); }
 }
 

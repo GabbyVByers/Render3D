@@ -7,12 +7,8 @@
 
 namespace Violet {
 
-	Keyboard::Keyboard(GLFWwindow* ptr) {
-		window_ptr = ptr;
-	}
-
-	bool Keyboard::pressed(int key, int edge) {
-		for (GlfwKeyboardEvent key_event : keyboard_events) {
+	bool Keyboard::pressed(int key, int edge) const {
+		for (const GlfwKeyboardEvent& key_event : keyboard_events) {
 			if (key_event.key != key)
 				continue;
 			if (key_event.action != edge)
@@ -22,7 +18,7 @@ namespace Violet {
 		return false;
 	}
 
-	bool Keyboard::pressing(int key) {
+	bool Keyboard::pressing(int key) const {
 		return glfwGetKey(window_ptr, key) == GLFW_PRESS;
 	}
 

@@ -15,6 +15,8 @@ namespace Violet {
 	double Vec2d::cross(const Vec2d& a, const Vec2d& b) { return (a.x * b.y) - (a.y * b.x); }
 	Vec2d Vec2d::normalize(const Vec2d& vec) {
 		double len = hypot(vec);
+		if (len == 0.0)
+			return Vec2d();
 		return {
 			vec.x / len,
 			vec.y / len

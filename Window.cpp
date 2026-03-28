@@ -113,13 +113,13 @@ namespace Violet {
 	}
 
 	Mouse& Window::mouse() {
-		static Mouse mouse(window_ptr);
-		return mouse;
+		internal_mouse.window_ptr = window_ptr;
+		return internal_mouse;
 	}
 
 	Keyboard& Window::keyboard() {
-		static Keyboard keyboard(window_ptr);
-		return keyboard;
+		internal_keyboard.window_ptr = window_ptr;
+		return internal_keyboard;
 	}
 
 	void Window::callback_window_resize(GLFWwindow* ptr, int width, int height) {

@@ -11,7 +11,7 @@ namespace Violet {
 	Vec3d::Vec3d(double x, double y, double z) { this->x = x; this->y = y; this->z = z; }
 
 	double Vec3d::hypot(const Vec3d& vec) { return std::hypot(vec.x, vec.y, vec.z); }
-	double Vec3d::dot(const Vec3d& a, const Vec3d& b) { return (a.x * b.x) + (a.y * b.y) + (a.y * b.z); }
+	double Vec3d::dot(const Vec3d& a, const Vec3d& b) { return (a.x * b.x) + (a.y * b.y) + (a.z * b.z); }
 	Vec3d Vec3d::cross(const Vec3d& a, const Vec3d& b) {
 		return {
 			(a.y * b.z) - (a.z * b.y),
@@ -21,9 +21,8 @@ namespace Violet {
 	}
 	Vec3d Vec3d::normalize(const Vec3d& vec) {
 		double len = hypot(vec);
-		if (len == 0.0) {
+		if (len == 0.0)
 			return Vec3d();
-		}
 		return {
 			vec.x / len,
 			vec.y / len,

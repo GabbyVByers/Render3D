@@ -7,10 +7,6 @@
 
 namespace Violet {
 
-	Mouse::Mouse(GLFWwindow* ptr) {
-		window_ptr = ptr;
-	}
-
 	Vec2d Mouse::position() const {
 		return pos;
 	}

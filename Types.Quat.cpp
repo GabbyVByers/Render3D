@@ -22,6 +22,8 @@ namespace Violet {
 
 	Quat Quat::normalize(const Quat& quat) {
 		double length = std::hypot(quat.w, std::hypot(quat.x, quat.y, quat.z));
+		if (length == 0.0)
+			return Quat();
 		return {
 			quat.w / length,
 			quat.x / length,

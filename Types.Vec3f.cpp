@@ -11,7 +11,7 @@ namespace Violet {
 	Vec3f::Vec3f(float x, float y, float z) { this->x = x; this->y = y; this->z = z; }
 
 	float Vec3f::hypot(const Vec3f& vec) { return std::hypot(vec.x, vec.y, vec.z); }
-	float Vec3f::dot(const Vec3f& a, const Vec3f& b) { return (a.x * b.x) + (a.y * b.y) + (a.y * b.z); }
+	float Vec3f::dot(const Vec3f& a, const Vec3f& b) { return (a.x * b.x) + (a.y * b.y) + (a.z * b.z); }
 	Vec3f Vec3f::cross(const Vec3f& a, const Vec3f& b) {
 		return {
 			(a.y * b.z) - (a.z * b.y),
@@ -21,9 +21,8 @@ namespace Violet {
 	}
 	Vec3f Vec3f::normalize(const Vec3f& vec) {
 		float len = hypot(vec);
-		if (len == 0.0f) {
+		if (len == 0.0f)
 			return Vec3f();
-		}
 		return {
 			vec.x / len,
 			vec.y / len,
