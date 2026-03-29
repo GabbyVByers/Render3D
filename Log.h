@@ -28,7 +28,11 @@ namespace Violet {
 	
 	class Log {
 	public:
-		static void warning(Concern concern, std::string info = "");
+		static void warning(
+			bool error_condition,
+			Concern concern,
+			std::string info = ""
+		);
 
 	private:
 		Log() = delete;

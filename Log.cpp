@@ -3,10 +3,11 @@
 
 namespace Violet {
 
-    void Log::warning(Concern concern, std::string info) {
+    void Log::warning(bool error_condition, Concern concern, std::string info) {
         std::string message = elaborate(concern);
         std::cerr << "\nWarning: " << message << '\n';
         if (info != "") std::cerr << "Info: " << info << '\n';
+        std::terminate();
     }
     
     std::string Log::elaborate(Concern concern) {
