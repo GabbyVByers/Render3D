@@ -10,6 +10,13 @@ namespace Violet {
 	Vec3d::Vec3d() { x = 0.0; y = 0.0; z = 0.0; }
 	Vec3d::Vec3d(double x, double y, double z) { this->x = x; this->y = y; this->z = z; }
 
+	Vec3d Vec3d::xpos() { return Vec3d( 1.0, 0.0, 0.0); }
+	Vec3d Vec3d::xneg() { return Vec3d(-1.0, 0.0, 0.0); }
+	Vec3d Vec3d::ypos() { return Vec3d( 0.0, 1.0, 0.0); }
+	Vec3d Vec3d::yneg() { return Vec3d( 0.0,-1.0, 0.0); }
+	Vec3d Vec3d::zpos() { return Vec3d( 0.0, 0.0, 1.0); }
+	Vec3d Vec3d::zneg() { return Vec3d( 0.0, 0.0,-1.0); }
+
 	double Vec3d::hypot(const Vec3d& vec) { return std::hypot(vec.x, vec.y, vec.z); }
 	double Vec3d::dot(const Vec3d& a, const Vec3d& b) { return (a.x * b.x) + (a.y * b.y) + (a.z * b.z); }
 	Vec3d Vec3d::cross(const Vec3d& a, const Vec3d& b) {

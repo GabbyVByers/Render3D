@@ -13,12 +13,15 @@
 #include <sstream>
 #include <cstdlib>
 #include <cmath>
+#include <cassert>
 
 namespace Violet {
 	
 	enum Concern {
 		// General
+		GENERIC,
 		NO_GLFW_CONTEXT,
+
 		// Violet::Window::Window()
 		WINDOW_SINGLETON_VIOLATED, // todo: depricate
 		GLFW_INIT_FAIL,
@@ -28,10 +31,10 @@ namespace Violet {
 	
 	class Log {
 	public:
-		static void warning(
-			bool error_condition,
+		static void assert_concern(
+			bool failure_condition,
 			Concern concern,
-			std::string info = ""
+			const char* info = nullptr
 		);
 
 	private:

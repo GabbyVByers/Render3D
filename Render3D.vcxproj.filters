@@ -16,34 +16,34 @@
     <Filter Include="Render3D\Miscellaneous">
       <UniqueIdentifier>{3b3f4341-3195-452e-9c94-d208574526d2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Libraries">
+    <Filter Include="Libraries">
       <UniqueIdentifier>{fc6654a2-6f92-4776-9fdf-af5ff1095219}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL\glad.c">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui.cpp">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_demo.cpp">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_draw.cpp">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_impl_glfw.cpp">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_impl_opengl3.cpp">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_tables.cpp">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClCompile>
     <ClCompile Include="ImGui\imgui_widgets.cpp">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Render3D</Filter>
@@ -105,34 +105,37 @@
     <ClCompile Include="Log.cpp">
       <Filter>Render3D\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Render3D\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImGui\imconfig.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui_impl_glfw.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui_impl_opengl3.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui_impl_opengl3_loader.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imgui_internal.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imstb_rectpack.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imstb_textedit.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="ImGui\imstb_truetype.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Render3D\Header Files</Filter>
@@ -147,7 +150,7 @@
       <Filter>Render3D\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
-      <Filter>Source Libraries</Filter>
+      <Filter>Libraries</Filter>
     </ClInclude>
     <ClInclude Include="Log.h">
       <Filter>Render3D\Header Files</Filter>
@@ -168,6 +171,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="test_image.png">
+      <Filter>Render3D\Miscellaneous</Filter>
+    </Image>
+    <Image Include="simple_earth.png">
       <Filter>Render3D\Miscellaneous</Filter>
     </Image>
   </ItemGroup>

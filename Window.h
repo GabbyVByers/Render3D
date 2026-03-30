@@ -9,9 +9,9 @@
 
 namespace Violet {
 
-	struct GlfwMouseEvent;
-	struct GlfwScrollEvent;
-	struct GlfwKeyboardEvent;
+	class Mouse;
+	class Keyboard;
+	class Window;
 
 	struct GlfwMouseEvent {
 		int button, action, mods;
@@ -24,10 +24,6 @@ namespace Violet {
 	struct GlfwKeyboardEvent {
 		int key, scancode, action, mods;
 	};
-
-	class Mouse;
-	class Keyboard;
-	class Window;
 
 	class Mouse {
 	public:

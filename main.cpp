@@ -16,15 +16,19 @@ int main() {
 	Vi::Window window("Violet3D Demo", 1920, 1080);
 	Vi::Camera camera;
 
-	Vi::Mesh mesh;
-	mesh.texture = Vi::Texture("test_image.png");
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 1.0f) });
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 0.0f) });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 1.0f) });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 1.0f) });
-	mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 0.0f) });
-	mesh.vertices.push_back({ Vi::Vec3f( 0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 0.0f) });
+	//Vi::Mesh mesh;
+	//mesh.texture = Vi::Texture("test_image.png");
+	//mesh.vertices.push_back({ Vi::Vec3f(-0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 1.0f) });
+	//mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 0.0f) });
+	//mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 1.0f) });
+	//mesh.vertices.push_back({ Vi::Vec3f( 0.5f, 0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 1.0f) });
+	//mesh.vertices.push_back({ Vi::Vec3f(-0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 0.0f, 0.0f) });
+	//mesh.vertices.push_back({ Vi::Vec3f( 0.5f,-0.5f, 0.0f), Vi::Color::white(), Vi::Vec2f( 1.0f, 0.0f) });
 	
+	Vi::Mesh sphere_mesh = Vi::Shapes::sphere(5);
+	sphere_mesh.paint(Vi::Color::white());
+	sphere_mesh.texture = Vi::Texture("simple_earth.png");
+
 	while (window.is_open()) {
 		window.poll_events();
 		window.clear(Violet::Color::blue() * 0.25);
@@ -33,7 +37,7 @@ int main() {
 		control_camera(camera);
 		debug_gui(window, camera);
 
-		window.draw(mesh, camera);
+		window.draw(sphere_mesh, camera);
 		window.display();
 	}
 	

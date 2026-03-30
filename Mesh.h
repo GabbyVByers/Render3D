@@ -82,6 +82,8 @@ namespace Violet {
 		Transform transform = Transform();
 		Texture texture = Texture();
 		std::vector<Vertex> vertices = std::vector<Vertex>();
+
+		void paint(const Color& color);
 	};
 }
 

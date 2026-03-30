@@ -126,6 +126,13 @@ namespace Violet {
 		Vec3i();
 		Vec3i(int x, int y, int z);
 
+		static Vec3i xpos();
+		static Vec3i xneg();
+		static Vec3i ypos();
+		static Vec3i yneg();
+		static Vec3i zpos();
+		static Vec3i zneg();
+
 		static int hypot(const Vec3i& vec);
 		static int dot(const Vec3i& a, const Vec3i& b);
 		static Vec3i cross(const Vec3i& a, const Vec3i& b);
@@ -158,6 +165,13 @@ namespace Violet {
 		float x, y, z;
 		Vec3f();
 		Vec3f(float x, float y, float z);
+
+		static Vec3f xpos();
+		static Vec3f xneg();
+		static Vec3f ypos();
+		static Vec3f yneg();
+		static Vec3f zpos();
+		static Vec3f zneg();
 
 		static float hypot(const Vec3f& vec);
 		static float dot(const Vec3f& a, const Vec3f& b);
@@ -196,6 +210,13 @@ namespace Violet {
 		double x, y, z;
 		Vec3d();
 		Vec3d(double x, double y, double z);
+
+		static Vec3d xpos();
+		static Vec3d xneg();
+		static Vec3d ypos();
+		static Vec3d yneg();
+		static Vec3d zpos();
+		static Vec3d zneg();
 
 		static double hypot(const Vec3d& vec);
 		static double dot(const Vec3d& a, const Vec3d& b);

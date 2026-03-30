@@ -10,6 +10,13 @@ namespace Violet {
 	Vec3i::Vec3i() { x = 0; y = 0; z = 0; }
 	Vec3i::Vec3i(int x, int y, int z) { this->x = x; this->y = y; this->z = z; }
 
+	Vec3i Vec3i::xpos() { return Vec3i( 1, 0, 0); }
+	Vec3i Vec3i::xneg() { return Vec3i(-1, 0, 0); }
+	Vec3i Vec3i::ypos() { return Vec3i( 0, 1, 0); }
+	Vec3i Vec3i::yneg() { return Vec3i( 0,-1, 0); }
+	Vec3i Vec3i::zpos() { return Vec3i( 0, 0, 1); }
+	Vec3i Vec3i::zneg() { return Vec3i( 0, 0,-1); }
+
 	int Vec3i::hypot(const Vec3i& vec) { return (int)std::hypot(vec.x, vec.y, vec.z); }
 	int Vec3i::dot(const Vec3i& a, const Vec3i& b) { return (a.x * b.x) + (a.y * b.y) + (a.z * b.z); }
 	Vec3i Vec3i::cross(const Vec3i& a, const Vec3i& b) {

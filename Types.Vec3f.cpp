@@ -10,6 +10,13 @@ namespace Violet {
 	Vec3f::Vec3f() { x = 0.0f; y = 0.0f; z = 0.0f; }
 	Vec3f::Vec3f(float x, float y, float z) { this->x = x; this->y = y; this->z = z; }
 
+	Vec3f Vec3f::xpos() { return Vec3f( 1.0f, 0.0f, 0.0f); }
+	Vec3f Vec3f::xneg() { return Vec3f(-1.0f, 0.0f, 0.0f); }
+	Vec3f Vec3f::ypos() { return Vec3f( 0.0f, 1.0f, 0.0f); }
+	Vec3f Vec3f::yneg() { return Vec3f( 0.0f,-1.0f, 0.0f); }
+	Vec3f Vec3f::zpos() { return Vec3f( 0.0f, 0.0f, 1.0f); }
+	Vec3f Vec3f::zneg() { return Vec3f( 0.0f, 0.0f,-1.0f); }
+
 	float Vec3f::hypot(const Vec3f& vec) { return std::hypot(vec.x, vec.y, vec.z); }
 	float Vec3f::dot(const Vec3f& a, const Vec3f& b) { return (a.x * b.x) + (a.y * b.y) + (a.z * b.z); }
 	Vec3f Vec3f::cross(const Vec3f& a, const Vec3f& b) {
