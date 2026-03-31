@@ -13,7 +13,7 @@ static void debug_gui(Vi::Window& window, Vi::Camera& camera);
 static void control_camera(Vi::Camera& camera);
 
 int main() {
-	Vi::Window window("Violet3D Demo", 1920, 1080);
+Vi::Window window("Violet3D Demo", 1920, 1080);
 	Vi::Camera camera;
 
 	//Vi::Mesh mesh;
@@ -28,6 +28,8 @@ int main() {
 	Vi::Mesh sphere_mesh = Vi::Shapes::sphere(100);
 	sphere_mesh.paint(Vi::Color::white());
 	sphere_mesh.texture = Vi::Texture("simple_earth.png");
+
+	std::cout << sphere_mesh.vertices.size() / 3 << '\n';
 
 	while (window.is_open()) {
 		window.poll_events();

@@ -19,6 +19,9 @@
     <Filter Include="Libraries">
       <UniqueIdentifier>{fc6654a2-6f92-4776-9fdf-af5ff1095219}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Space">
+      <UniqueIdentifier>{d8f59b83-0bb7-4ce2-975c-46bbc6a36ec5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL\glad.c">
@@ -44,9 +47,6 @@
     </ClCompile>
     <ClCompile Include="ImGui\imgui_widgets.cpp">
       <Filter>Libraries</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Render3D</Filter>
     </ClCompile>
     <ClCompile Include="Types.Vec2d.cpp">
       <Filter>Render3D\Source Files</Filter>
@@ -107,6 +107,12 @@
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
       <Filter>Render3D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.Vertex.cpp">
+      <Filter>Render3D\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Space</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +180,12 @@
       <Filter>Render3D\Miscellaneous</Filter>
     </Image>
     <Image Include="simple_earth.png">
+      <Filter>Render3D\Miscellaneous</Filter>
+    </Image>
+    <Image Include="checkers.png">
+      <Filter>Render3D\Miscellaneous</Filter>
+    </Image>
+    <Image Include="checkers_wide.png">
       <Filter>Render3D\Miscellaneous</Filter>
     </Image>
   </ItemGroup>

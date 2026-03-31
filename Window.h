@@ -13,61 +13,57 @@ namespace Violet {
 	class Keyboard;
 	class Window;
 
-	struct GlfwMouseEvent {
-		int button, action, mods;
-	};
-
-	struct GlfwScrollEvent {
-		double xoffset, yoffset;
-	};
-
-	struct GlfwKeyboardEvent {
-		int key, scancode, action, mods;
-	};
+	struct GlfwMouseEvent    { int button, action, mods; };
+	struct GlfwScrollEvent   { double xoffset, yoffset; };
+	struct GlfwKeyboardEvent { int key, scancode, action, mods; };
 
 	class Mouse {
 	public:
-		Mouse() {};
-		Vec2d position() const;
-		Vec2d velocity() const;
-		bool pressing(int button) const;
-		bool clicked(int button, int edge) const;
+		Mouse()  = default;
+		~Mouse() = default;
+		Mouse(const Mouse& other)                  = delete;
+		Mouse(Mouse&& other) noexcept              = delete;
+		Mouse& operator = (const Mouse& other)     = delete;
+		Mouse& operator = (Mouse&& other) noexcept = delete;
+
+		Vec2d  position() const;
+		Vec2d  velocity() const;
+		bool   pressing(int button) const;
+		bool   clicked(int button, int edge) const;
 		double scroll() const;
 
 	private:
 		friend Window;
+		void reset();
+		void push_mouse_event(const GlfwMouseEvent& mouse_event);
+		void push_scroll_event(const GlfwScrollEvent& scroll_event);
+		
 		Vec2d pos = Vec2d();
 		Vec2d vel = Vec2d();
 		GLFWwindow* window_ptr = nullptr;
 		std::vector<GlfwMouseEvent> mouse_events;
 		std::vector<GlfwScrollEvent> scroll_events;
-		void reset();
-		void push_mouse_event(const GlfwMouseEvent& mouse_event);
-		void push_scroll_event(const GlfwScrollEvent& scroll_event);
-
-		Mouse(const Mouse& mouse) = delete;
-		Mouse(Mouse&& mouse) noexcept = delete;
-		Mouse& operator = (const Mouse& mouse) = delete;
-		Mouse& operator = (Mouse&& mouse) noexcept = delete;
 	};
 
 	class Keyboard {
 	public:
-		Keyboard() {};
+		Keyboard() = default;
+		~Keyboard() = default;
+		Keyboard(const Keyboard& other)                  = delete;
+		Keyboard(Keyboard&& other) noexcept              = delete;
+		Keyboard& operator = (const Keyboard& other)     = delete;
+		Keyboard& operator = (Keyboard&& other) noexcept = delete;
+		
 		bool pressed(int key, int edge) const;
 		bool pressing(int key) const;
 
 	private:
 		friend Window;
-		GLFWwindow* window_ptr = nullptr;
-		std::vector<GlfwKeyboardEvent> keyboard_events;
 		void reset();
 		void push_key_event(const GlfwKeyboardEvent& key_event);
 
-		Keyboard(const Keyboard& keyboard) = delete;
-		Keyboard(Keyboard&& keyboard) noexcept = delete;
-		Keyboard& operator = (const Keyboard& keyboard) = delete;
-		Keyboard& operator = (Keyboard&& keyboard) noexcept = delete;
+		GLFWwindow* window_ptr = nullptr;
+		std::vector<GlfwKeyboardEvent> keyboard_events;
 	};
 
 	class Window {
@@ -82,7 +78,7 @@ namespace Violet {
 		void clear(Color color);
 		void draw(const Mesh& mesh, Camera& camera);
 		void display();
-
+		
 		static Mouse& mouse();
 		static Keyboard& keyboard();
 
@@ -91,6 +87,7 @@ namespace Violet {
 		inline static GLFWwindow* window_ptr = nullptr;
 		inline static Mouse internal_mouse = Mouse();
 		inline static Keyboard internal_keyboard = Keyboard();
+
 		static void callback_window_resize(GLFWwindow* ptr, int width, int height);
 		static void callback_keyboard(GLFWwindow* ptr, int key, int scancode, int action, int mods);
 		static void callback_mouse(GLFWwindow* ptr, int button, int action, int mods);

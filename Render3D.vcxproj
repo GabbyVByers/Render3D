@@ -162,6 +162,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Mesh.Transform.cpp" />
+    <ClCompile Include="Mesh.Vertex.cpp" />
     <ClCompile Include="Types.Mat4f.cpp" />
     <ClCompile Include="Shapes.cpp" />
     <ClCompile Include="Mesh.Texture.cpp" />
@@ -206,6 +207,8 @@
     <Text Include="todo.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="checkers.png" />
+    <Image Include="checkers_wide.png" />
     <Image Include="simple_earth.png" />
     <Image Include="test_image.png" />
   </ItemGroup>

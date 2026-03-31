@@ -7,12 +7,6 @@
 
 namespace Violet {
 
-	Camera::Camera() {
-		fov_degrees = 100.0;
-		near = 0.1; far = 100.0;
-		position = Vec3d(0.0, 0.0, 0.0);
-	}
-
 	Vec3d Camera::forward() const {
 		Vec3d forward = Vec3d(0.0, 0.0, -1.0);
 		return Vec3d::rotate(forward, orientation);

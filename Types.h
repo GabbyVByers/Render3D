@@ -32,9 +32,10 @@ namespace Violet {
 		Vec2i(const Vec2i& vec);
 		Vec2i(const Vec2f& vec);
 		Vec2i(const Vec2d& vec);
-		Vec2i(Vec2i&& vec) noexcept;
 		Vec2i(Vec2f&& vec) noexcept;
+		Vec2i(Vec2i&& vec) noexcept;
 		Vec2i(Vec2d&& vec) noexcept;
+
 		Vec2i& operator = (const Vec2i& vec);
 		Vec2i& operator = (const Vec2f& vec);
 		Vec2i& operator = (const Vec2d& vec);

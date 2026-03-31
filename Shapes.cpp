@@ -70,15 +70,10 @@ namespace Violet {
 		}
 
 		for (Vertex& vertex : sphere_mesh.vertices) {
-
 			Vec3d pos = vertex.position;
 			double pi = std::numbers::pi;
-
 			vertex.tex_coord.x = (float)(0.5 + std::atan2(pos.x, pos.z) / (2.0 * pi));
 			vertex.tex_coord.y = (float)((std::asin(pos.y) + (pi / 2.0)) / pi);
-
-			//vertex.tex_coord.x = std::atan2(pos.x, pos.z) / (2.0f * pi);
-			//std::cout << vertex.tex_coord.x << '\n';
 		}
 
 		for (size_t i = 0; i < sphere_mesh.vertices.size(); i += 3) {
