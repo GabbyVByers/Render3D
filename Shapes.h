@@ -7,17 +7,16 @@
 #include "Mesh.h"
 
 namespace Violet {
-	namespace Shapes {
 
-		Mesh arrow();
-		Mesh cube(unsigned int divisions);
-		Mesh sphere(unsigned int divisions);
-
-		namespace Immediate {
-
-			void bounding_box(const Mesh& mesh, const Color& color);
-			//Mesh arrow();
-		}
+	class Shapes {
+	public:
+		static Mesh arrow();
+		static Mesh cube(unsigned int divisions);
+		static Mesh sphere(unsigned int divisions);
+	private:
+		Shapes() = delete;
+		Shapes(const Shapes& other) = delete;
+		Shapes(Shapes&& other) noexcept = delete;
 	};
 }
 

@@ -21,7 +21,6 @@ namespace Violet {
 		// General
 		GENERIC,
 		NO_GLFW_CONTEXT,
-
 		// Violet::Window::Window()
 		WINDOW_SINGLETON_VIOLATED, // todo: depricate
 		GLFW_INIT_FAIL,
@@ -36,7 +35,6 @@ namespace Violet {
 			Concern concern,
 			const char* info = nullptr
 		);
-
 	private:
 		Log() = delete;
 		Log(const Log&) = delete;

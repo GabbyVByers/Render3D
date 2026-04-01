@@ -13,6 +13,13 @@
 
 namespace Violet {
 
+	class Camera;
+	class Material;
+	class Transform;
+	class Texture;
+	class Vertex;
+	class Mesh;
+
 	class Camera {
 	public:
 		double far = 100.0f;
@@ -35,10 +42,11 @@ namespace Violet {
 		GLenum primitive = NULL;
 		Material(const std::string& path, GLenum type);
 		~Material();
-		Material(const Material& other) = delete;
 		Material(Material&& other) noexcept;
-		Material& operator = (const Material& other) = delete;
 		Material& operator = (Material&& other) noexcept;
+	private:
+		Material(const Material& other) = delete;
+		Material& operator = (const Material& other) = delete;
 	};
 
 	class Transform {
@@ -55,8 +63,9 @@ namespace Violet {
 		Texture(const std::string& path = "default_no_texture");
 		~Texture();
 		Texture(Texture&& other) noexcept;
-		Texture(const Texture& other) = delete;
 		Texture& operator = (Texture&& other) noexcept;
+	private:
+		Texture(const Texture& other) = delete;
 		Texture& operator = (const Texture& other) = delete;
 	};
 

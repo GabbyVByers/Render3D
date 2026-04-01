@@ -30,11 +30,9 @@ namespace Violet {
 		Vec2i(Vec2f&& vec) noexcept;
 		Vec2i(Vec2i&& vec) noexcept;
 		Vec2i(Vec2d&& vec) noexcept;
-
 		static int hypot(const Vec2i& vec);
 		static int dot(const Vec2i& a, const Vec2i& b);
 		static int cross(const Vec2i& a, const Vec2i& b);
-
 		Vec2i& operator = (const Vec2i& vec);
 		Vec2i& operator = (const Vec2f& vec);
 		Vec2i& operator = (const Vec2d& vec);
@@ -62,12 +60,10 @@ namespace Violet {
 		Vec2f(Vec2i&& vec) noexcept;
 		Vec2f(Vec2f&& vec) noexcept;
 		Vec2f(Vec2d&& vec) noexcept;
-
 		static float hypot(const Vec2f& vec);
 		static float dot(const Vec2f& a, const Vec2f& b);
 		static float cross(const Vec2f& a, const Vec2f& b);
 		static Vec2f normalize(const Vec2f& vec);
-
 		Vec2f& operator = (const Vec2i& vec);
 		Vec2f& operator = (const Vec2f& vec);
 		Vec2f& operator = (const Vec2d& vec);
@@ -95,12 +91,10 @@ namespace Violet {
 		Vec2d(Vec2i&& vec) noexcept;
 		Vec2d(Vec2f&& vec) noexcept;
 		Vec2d(Vec2d&& vec) noexcept;
-
 		static double hypot(const Vec2d& vec);
 		static double dot(const Vec2d& a, const Vec2d& b);
 		static double cross(const Vec2d& a, const Vec2d& b);
 		static Vec2d normalize(const Vec2d& vec);
-
 		Vec2d& operator = (const Vec2i& vec);
 		Vec2d& operator = (const Vec2f& vec);
 		Vec2d& operator = (const Vec2d& vec);
@@ -128,7 +122,6 @@ namespace Violet {
 		Vec3i(Vec3i&& vec) noexcept;
 		Vec3i(Vec3f&& vec) noexcept;
 		Vec3i(Vec3d&& vec) noexcept;
-
 		static Vec3i xpos();
 		static Vec3i xneg();
 		static Vec3i ypos();
@@ -138,7 +131,6 @@ namespace Violet {
 		static int hypot(const Vec3i& vec);
 		static int dot(const Vec3i& a, const Vec3i& b);
 		static Vec3i cross(const Vec3i& a, const Vec3i& b);
-
 		Vec3i& operator = (const Vec3i& vec);
 		Vec3i& operator = (const Vec3f& vec);
 		Vec3i& operator = (const Vec3d& vec);
@@ -166,7 +158,6 @@ namespace Violet {
 		Vec3f(Vec3i&& vec) noexcept;
 		Vec3f(Vec3f&& vec) noexcept;
 		Vec3f(Vec3d&& vec) noexcept;
-
 		static Vec3f xpos();
 		static Vec3f xneg();
 		static Vec3f ypos();
@@ -180,7 +171,6 @@ namespace Violet {
 		static Vec3f rotate(const Vec3f& vec, const Vec3i& axis, float theta);
 		static Vec3f rotate(const Vec3f& vec, const Vec3f& axis, float theta);
 		static Vec3f rotate(const Vec3f& vec, const Quat& rotation_quat);
-
 		Vec3f& operator = (const Vec3i& vec);
 		Vec3f& operator = (const Vec3f& vec);
 		Vec3f& operator = (const Vec3d& vec);
@@ -208,7 +198,6 @@ namespace Violet {
 		Vec3d(Vec3i&& vec) noexcept;
 		Vec3d(Vec3f&& vec) noexcept;
 		Vec3d(Vec3d&& vec) noexcept;
-
 		static Vec3d xpos();
 		static Vec3d xneg();
 		static Vec3d ypos();
@@ -222,7 +211,6 @@ namespace Violet {
 		static Vec3d rotate(const Vec3d& vec, const Vec3i& axis, double theta);
 		static Vec3d rotate(const Vec3d& vec, const Vec3d& axis, double theta);
 		static Vec3d rotate(const Vec3d& vec, const Quat& rotation_quat);
-
 		Vec3d& operator = (const Vec3i& vec);
 		Vec3d& operator = (const Vec3f& vec);
 		Vec3d& operator = (const Vec3d& vec);
@@ -260,6 +248,7 @@ namespace Violet {
 		float data[4][4];
 		Mat4f(const Mat4& matrix);
 		~Mat4f() = default;
+	private:
 		Mat4f() = delete;
 		Mat4f(const Mat4f& other) = delete;
 		Mat4f(Mat4f&& other) noexcept = delete;

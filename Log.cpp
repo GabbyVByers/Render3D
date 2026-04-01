@@ -1,4 +1,8 @@
 
+/*
+	Log.cpp
+*/
+
 #include "Log.h"
 
 namespace Violet {

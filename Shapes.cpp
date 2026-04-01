@@ -100,12 +100,5 @@ namespace Violet {
 
 		return sphere_mesh;
 	}
-
-	namespace Immediate {
-
-		void bounding_box(const Mesh& mesh, const Color& color) {
-			
-		}
-	}
 }
 

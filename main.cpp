@@ -18,7 +18,7 @@ Vi::Window window("Violet3D Demo", 1920, 1080);
 
 	Vi::Mesh sphere_mesh = Vi::Shapes::sphere(100);
 	sphere_mesh.paint(Vi::Color::white());
-	sphere_mesh.texture = Vi::Texture("simple_earth.png");
+	sphere_mesh.texture = Vi::Texture("textures/moon.png");
 
 	while (window.is_open()) {
 		window.poll_events();
